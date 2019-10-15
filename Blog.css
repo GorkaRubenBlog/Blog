@@ -1,0 +1,25 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-family: "Lucida Sans", sans-serif;
+    background-color: #FFE0AA;
+  }
+  
+  header {
+    background-color: #D4CF6A;
+  }
+  #logo {
+    float:left;
+  }
+
+  div[class*="Def-"]{
+    display: grid;
+    grid-template-rows: 20% 20% 20%;
+    grid-template-columns: auto auto auto ;
+    text-align: center;
+  }
+  footer{
+
+  }
