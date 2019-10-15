@@ -1,7 +1,4 @@
-* {
-    box-sizing: border-box;
-  }
-  
+
   html {
     font-family: "Lucida Sans", sans-serif;
     background-color: #FFE0AA;
@@ -9,17 +6,58 @@
   
   header {
     background-color: #D4CF6A;
+    display: inline-block;
+    width: 100%;
+
+  }
+  nav{
+    background-color:red; 
+  }
+  nav a{
+    text-justify: auto;
+    margin-right: 12% ;
+    margin-left: 12%;
+  }
+  
+  nav a:last-of-type{
+    border-left-width: 2px;
+    border-left-style:solid ;
+    border-left-color: slateblue;
+    
   }
   #logo {
     float:left;
+    width: 50%;
+    padding-left: 10px;
   }
-
-  div[class*="Def-"]{
-    display: grid;
-    grid-template-rows: 20% 20% 20%;
-    grid-template-columns: auto auto auto ;
-    text-align: center;
+  #login{
+    float: right;
+    padding-right: 10px;
   }
   footer{
-
+    background-color:#553600 ;
+    height:100%;
   }
+ 
+  .grid-contenedor[class*="grid-contenedor"]{
+    display: grid;
+    margin: 10px;
+    padding: 10px;
+    grid-template-rows: 200px 200px 200px ;
+    grid-template-columns: auto auto auto ;
+    grid-gap: 20x ;
+    text-align: center;
+   }
+
+  [class*="Def-"]{
+      margin: 10px;
+      background-color:#807A15; 
+      justify-content: center;
+
+      align-items: center;
+    }
+    [class*="Def-"] p{
+      margin-top: 75px;}
+   
+
+  
