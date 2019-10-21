@@ -1,5 +1,6 @@
-<!DOCTYPE html>
 
+                
+<!DOCTYPE html>
 <html lang="es">
     <head>
         <title>Wiki Proiektua</title>
@@ -8,8 +9,27 @@
         <script src="LogForm.js"></script>
 
         <!--link rel='shortcut icon' type='image/x-icon' href='logoBlack.png' />-->
+  
     </head>
     <header>
+        <?php      
+            #Si todo va bien, se ejecuta esta parte del código...
+            if(!isset($_POST["CORR"])||!isset($_POST["CONT"]));
+            include_once "konexioa.php";
+            $CORR = $_POST["CORR"];
+            $CONT = $_POST["CONT"];
+            $LOGGED = FALSE;
+            $LOG = "login";
+            $VARI ="openForm()";
+               #Salir si alguno de los datos no está presente
+               $sql = "SELECT * FROM usuarios WHERE CORR='$CORR' AND CONT='$CONT'";
+               foreach ($konexioa->query($sql) as $row) {
+                       $LOGGED = TRUE;
+                       echo $LOGGED;
+                       $LOG = "Logged";
+                       $VARI = "";
+               }
+?>
         <!-- Logo Eta izena-->
         <!-- Logo-->
         <!-- izena-->
@@ -18,10 +38,10 @@
         </section>
         <!-- Login-->
         <section id=login>
-            <button onclick="openForm()">login</button>
+            <button onclick=<?php echo $VARI?>><?php echo $LOG?></button>
         </section>
         <div class="form-popup" id="myForm">
-            <form action=".php" class="form-container">
+            <form method="POST" action="<?php echo $_SERVER["PHP_SELF"] ?>" class="form-container">
               <h1>Login</h1>
           
               <label for="email"><b>Email</b></label>
@@ -37,6 +57,7 @@
           </div>
     </header>
     <body>
+        
         <nav>
             <a>hasiera</a>
             <a>perfil</a>
@@ -68,4 +89,4 @@
         </footer>
     </body>
 
-</html>
+</html>                

@@ -55,3 +55,4 @@ function borrarError() {
         formulario.elements[i].className = "";
     }
 }
+
