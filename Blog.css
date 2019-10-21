@@ -126,4 +126,16 @@
         opacity: 1;
       }
 
-  
+  /* ***************************
+          REGISTRO.PHP
+  *******************************/
+  .error {
+    border: solid 2px #FF0000;
+}
+  .mensajeError{
+    background-color: rgba(255, 0, 0, 0.548);
+  }
+
+  .mensajeCorrecto{
+    background-color: rgba(255, 255, 255, 0.548);
+  }
