@@ -14,6 +14,7 @@
     <header>
         <?php      
             #Si todo va bien, se ejecuta esta parte del código...
+
             if(!isset($_POST["CORR"])||!isset($_POST["CONT"]));
             include_once "konexioa.php";
             $CORR = $_POST["CORR"];
@@ -21,14 +22,23 @@
             $LOGGED = FALSE;
             $LOG = "login";
             $VARI ="openForm()";
-               #Salir si alguno de los datos no está presente
+            echo $LOGGED;
+            if($LOGGED==FALSE){
+                        #Salir si alguno de los datos no está presente
                $sql = "SELECT * FROM usuarios WHERE CORR='$CORR' AND CONT='$CONT'";
                foreach ($konexioa->query($sql) as $row) {
                        $LOGGED = TRUE;
-                       echo $LOGGED;
-                       $LOG = "Logged";
+                       $user = $row["NOMB"];
                        $VARI = "";
-               }
+                       $LOG = $user;
+                       session_name('Private');
+                       session_start();
+                       $private_id = session_id();
+                       $b = $_SESSION['pr_key'];
+                       session_write_close();
+                                }
+                            }
+               
 ?>
         <!-- Logo Eta izena-->
         <!-- Logo-->
@@ -39,6 +49,9 @@
         <!-- Login-->
         <section id=login>
             <button onclick=<?php echo $VARI?>><?php echo $LOG?></button>
+            <button onclick="">Registratu</button>
+            <button onclic="<?php 
+            session_destroy(); ?>">loggout</button>
         </section>
         <div class="form-popup" id="myForm">
             <form method="POST" action="<?php echo $_SERVER["PHP_SELF"] ?>" class="form-container">
@@ -59,9 +72,10 @@
     <body>
         
         <nav>
-            <a>hasiera</a>
-            <a>perfil</a>
-            <a>egileak</a>
+    
+                <button type="submit">hasiera</button>
+                <button type="submit">hasiera</button>    
+                <button type="submit">hasiera</button>
         </nav>
         <div class="grid-contenedor">
             <div class="Def-1">
