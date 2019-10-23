@@ -13,31 +13,36 @@
     </head>
     <header>
         <?php      
+        include_once "konexioa.php";
+        $i=0;
+        $infos=array();
+        $sql = "SELECT TITULO FROM informazioa";
+        foreach ($konexioa->query($sql) as $row) {
+            array_push($infos,$row["TITULO"]);
+                     }   
             #Si todo va bien, se ejecuta esta parte del código...
-
-            if(!isset($_POST["CORR"])||!isset($_POST["CONT"]));
-            include_once "konexioa.php";
-            $CORR = $_POST["CORR"];
-            $CONT = $_POST["CONT"];
+            $CORR = "";
+            $CONT = "";
             $LOGGED = FALSE;
             $LOG = "login";
             $VARI ="openForm()";
+            if(!isset($_POST["CORR"])||!isset($_POST["CONT"])){}else{
+            $CORR = $_POST["CORR"];
+            $CONT = $_POST["CONT"];
             echo $LOGGED;
             if($LOGGED==FALSE){
                         #Salir si alguno de los datos no está presente
-               $sql = "SELECT * FROM usuarios WHERE CORR='$CORR' AND CONT='$CONT'";
-               foreach ($konexioa->query($sql) as $row) {
+                $CONT=password_hash($CONT, PASSWORD_DEFAULT);
+                $sql = "SELECT * FROM usuarios WHERE CORR='$CORR' AND CONT='$CONT'";
+                echo $sql;
+                foreach ($konexioa->query($sql) as $row) {
                        $LOGGED = TRUE;
                        $user = $row["NOMB"];
                        $VARI = "";
                        $LOG = $user;
-                       session_name('Private');
-                       session_start();
-                       $private_id = session_id();
-                       $b = $_SESSION['pr_key'];
-                       session_write_close();
-                                }
+                                }   
                             }
+                        }
                
 ?>
         <!-- Logo Eta izena-->
@@ -49,9 +54,9 @@
         <!-- Login-->
         <section id=login>
             <button onclick=<?php echo $VARI?>><?php echo $LOG?></button>
-            <button onclick="">Registratu</button>
-            <button onclic="<?php 
-            session_destroy(); ?>">loggout</button>
+            <form method="POST" action="<?php echo $_SERVER["PHP_SELF"] ?>" class="form-container">
+                <button type="submit" onclic="<?php  $user=""; $LOG="login"  ?>">loggout</button>
+            </form>
         </section>
         <div class="form-popup" id="myForm">
             <form method="POST" action="<?php echo $_SERVER["PHP_SELF"] ?>" class="form-container">
@@ -64,6 +69,7 @@
               <input type="password" placeholder="Enter Password" name="CONT" required>
           
               <button type="submit" class="btn">Login</button>
+              <button class="btn"><a href='registro.php'>registratu</a></button>
               <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
             </form>
 
@@ -79,22 +85,22 @@
         </nav>
         <div class="grid-contenedor">
             <div class="Def-1">
-               <p>GORRIA</p> 
+               <p><?php echo $infos[$i];$i++?></p> 
             </div>
             <div class="Def-2">
-                <p>GORRIA</p> 
+                <p><?php echo $infos[$i];$i++?></p> 
             </div>
             <div class="Def-3">
-                <p>GORRIA</p> 
+                <p><?php echo $infos[$i];$i++?></p> 
             </div>
             <div class="Def-4">
-                <p>GORRIA</p> 
+                <p><?php echo $infos[$i];$i++?></p> 
             </div>
             <div class="Def-5">
-                <p>GORRIA</p> 
+                <p><?php echo $infos[$i];$i++?></p> 
             </div>
             <div class="Def-6">
-                <p>GORRIA</p> 
+                <p><?php echo $infos[$i];$i++?></p> 
             </div> 
         </div>
   
@@ -104,3 +110,5 @@
     </body>
 
 </html>                
+<!---------IR A OTRA PAJINA------>
+<!-------------"POST" MANDAR COMO INPUT INVISIBLE $user--------------->
