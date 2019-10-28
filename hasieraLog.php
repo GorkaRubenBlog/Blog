@@ -16,8 +16,11 @@
         include_once "konexioa.php";
         $i=0;
         $infos=array();
-        $sql = "SELECT TITULO FROM informazioa";
+        $indes=array();
+
+        $sql = "SELECT * FROM informazioa";
         foreach ($konexioa->query($sql) as $row) {
+            array_push($indes,$row["COD"]);
             array_push($infos,$row["TITULO"]);
                      }   
             #Si todo va bien, se ejecuta esta parte del código...
@@ -26,13 +29,18 @@
             $LOGGED = FALSE;
             $LOG = "login";
             $VARI ="openForm()";
+            if(!isset($_POST["USER"])){}else{
+                $LOG=$_POST["USER"];
+                $LOGGED = TRUE;
+                $VARI = "";
+
+            };
             if(!isset($_POST["CORR"])||!isset($_POST["CONT"])){}else{
+          
             $CORR = $_POST["CORR"];
             $CONT = $_POST["CONT"];
-            echo $LOGGED;
             if($LOGGED==FALSE){
                         #Salir si alguno de los datos no está presente
-                $CONT=password_hash($CONT, PASSWORD_DEFAULT);
                 $sql = "SELECT * FROM usuarios WHERE CORR='$CORR' AND CONT='$CONT'";
                 echo $sql;
                 foreach ($konexioa->query($sql) as $row) {
@@ -40,7 +48,7 @@
                        $user = $row["NOMB"];
                        $VARI = "";
                        $LOG = $user;
-                                }   
+                             }  
                             }
                         }
                
@@ -52,12 +60,13 @@
             <H1>BLOG IZENA</H1>
         </section>
         <!-- Login-->
-        <section id=login>
+        <section id="login">
             <button onclick=<?php echo $VARI?>><?php echo $LOG?></button>
-            <form method="POST" action="<?php echo $_SERVER["PHP_SELF"] ?>" class="form-container">
-                <button type="submit" onclic="<?php  $user=""; $LOG="login"  ?>">loggout</button>
-            </form>
+                <form method="POST" action="<?php echo $_SERVER["PHP_SELF"] ?>">
+                    <button type="submit" onclic="<?php  $user=""; $LOG="login"  ?>">loggout</button>
+                </form>
         </section>
+        <!--Pop-Up----->
         <div class="form-popup" id="myForm">
             <form method="POST" action="<?php echo $_SERVER["PHP_SELF"] ?>" class="form-container">
               <h1>Login</h1>
@@ -84,25 +93,20 @@
                 <button type="submit">hasiera</button>
         </nav>
         <div class="grid-contenedor">
-            <div class="Def-1">
-               <p><?php echo $infos[$i];$i++?></p> 
+            <?php for($i=1;$i<sizeof($infos);$i++){ ?>
+                
+                       <div class="Def-1">
+                       <form method="POST"  action="informazioaIkus.php">
+                       <input type="hidden" value="<?php echo $indes[$i+1]?>"name="IND">
+                       <input type="hidden" value="<?php echo $user?>" name="USER">
+                      <p><?php echo $infos[$i];?></p> 
+                       <input type="submit">
+                       </form>
+                   </div>
+
+           <?php }?>
+     
             </div>
-            <div class="Def-2">
-                <p><?php echo $infos[$i];$i++?></p> 
-            </div>
-            <div class="Def-3">
-                <p><?php echo $infos[$i];$i++?></p> 
-            </div>
-            <div class="Def-4">
-                <p><?php echo $infos[$i];$i++?></p> 
-            </div>
-            <div class="Def-5">
-                <p><?php echo $infos[$i];$i++?></p> 
-            </div>
-            <div class="Def-6">
-                <p><?php echo $infos[$i];$i++?></p> 
-            </div> 
-        </div>
   
         <footer>
             
