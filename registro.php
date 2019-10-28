@@ -30,7 +30,11 @@
 
             <input type="reset" value="Borrar" id="borrar" />
         </form>
+<<<<<<< HEAD
         <form method="POST" action="hasieraLog.php">
+=======
+        <form method="POST" action="Hasiera.html">
+>>>>>>> 7dcd1c873f81a8dd49e3f13c42c65a2f16c9a127
             <input type="submit" value="Atzera">
         </form>
 
@@ -82,7 +86,10 @@
 
 
             ?>
+<<<<<<< HEAD
             
+=======
+>>>>>>> 7dcd1c873f81a8dd49e3f13c42c65a2f16c9a127
     </body>
 
 </html>

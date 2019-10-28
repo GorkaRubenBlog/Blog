@@ -55,3 +55,7 @@ function borrarError() {
         formulario.elements[i].className = "";
     }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7dcd1c873f81a8dd49e3f13c42c65a2f16c9a127

@@ -32,6 +32,7 @@
   }
   #login{
     float: right;
+    width: 49%;
     padding-right: 10px;
   }
   footer{
@@ -70,7 +71,6 @@
         right: 28px;
         width: 280px;
       }
-      
       
       /*----------Botton Loggin------------------------------*/
       /* The popup form - hidden by default */
@@ -126,7 +126,6 @@
       .form-container .btn:hover, .open-button:hover {
         opacity: 1;
       }
-   
 
   /* ***************************
           REGISTRO.PHP
