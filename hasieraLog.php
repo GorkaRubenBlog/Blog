@@ -13,45 +13,21 @@
     </head>
     <header>
         <?php      
-        include_once "konexioa.php";
+            include_once "konexioa.php";
         $i=0;
         $infos=array();
         $indes=array();
+        $VARI="openForm()";
+    /*-----------------------OBTENER SESSION------*/
 
         $sql = "SELECT * FROM informazioa";
         foreach ($konexioa->query($sql) as $row) {
             array_push($indes,$row["COD"]);
             array_push($infos,$row["TITULO"]);
-                     }   
-            #Si todo va bien, se ejecuta esta parte del código...
-            $CORR = "";
-            $CONT = "";
-            $LOGGED = FALSE;
-            $LOG = "login";
-            $VARI ="openForm()";
-            if(!isset($_POST["USER"])){}else{
-                $LOG=$_POST["USER"];
-                $LOGGED = TRUE;
-                $VARI = "";
 
-            };
-            if(!isset($_POST["CORR"])||!isset($_POST["CONT"])){}else{
-          
-            $CORR = $_POST["CORR"];
-            $CONT = $_POST["CONT"];
-            if($LOGGED==FALSE){
-                        #Salir si alguno de los datos no está presente
-                $sql = "SELECT * FROM usuarios WHERE CORR='$CORR' AND CONT='$CONT'";
-                echo $sql;
-                foreach ($konexioa->query($sql) as $row) {
-                       $LOGGED = TRUE;
-                       $user = $row["NOMB"];
-                       $VARI = "";
-                       $LOG = $user;
-                             }  
-                            }
-                        }
-               
+        }
+        include("Sessiones.php");
+                            
 ?>
         <!-- Logo Eta izena-->
         <!-- Logo-->
@@ -60,12 +36,19 @@
             <H1>BLOG IZENA</H1>
         </section>
         <!-- Login-->
+
         <section id="login">
-            <button onclick=<?php echo $VARI?>><?php echo $LOG?></button>
+            <button onclick=<?php echo $VARI?>><?php if(!isset($_SESSION["USU"])){echo "loggin";}
+                else{echo $_SESSION["USU"];}?></button>
                 <form method="POST" action="<?php echo $_SERVER["PHP_SELF"] ?>">
-                    <button type="submit" onclic="<?php  $user=""; $LOG="login"  ?>">loggout</button>
+                    <button type="submit" onClick="<?php  
+                    unset( $_SESSION["USU"]) ;
+                    unset( $_SESSION["USU"]) ;
+
+                    session_destroy(); ?>">loggout</button>
                 </form>
         </section>
+
         <!--Pop-Up----->
         <div class="form-popup" id="myForm">
             <form method="POST" action="<?php echo $_SERVER["PHP_SELF"] ?>" class="form-container">
@@ -93,20 +76,19 @@
                 <button type="submit">hasiera</button>
         </nav>
         <div class="grid-contenedor">
-            <?php for($i=1;$i<sizeof($infos);$i++){ ?>
-                
-                       <div class="Def-1">
-                       <form method="POST"  action="informazioaIkus.php">
-                       <input type="hidden" value="<?php echo $indes[$i+1]?>"name="IND">
-                       <input type="hidden" value="<?php echo $user?>" name="USER">
-                      <p><?php echo $infos[$i];?></p> 
-                       <input type="submit">
-                       </form>
-                   </div>
 
-           <?php }?>
-     
+        <?php for($i=0;$i<sizeof($infos);$i++){ ?>
+            <div class="Def-1">
+                <form method="POST" action="informazioaIkusi.php">
+                <input type="hidden" value="<?php echo $indes[$i]?>" name="IND">
+                <input type="hidden" value="<?php echo $_SESSION['ID']?>"name="cod">
+
+               <p><?php echo $infos[$i];?></p> 
+                <input type="submit">
+                </form>
             </div>
+         <?php }?>
+        </div>
   
         <footer>
             
@@ -114,5 +96,3 @@
     </body>
 
 </html>                
-<!---------IR A OTRA PAJINA------>
-<!-------------"POST" MANDAR COMO INPUT INVISIBLE $user--------------->

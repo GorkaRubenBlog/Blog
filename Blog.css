@@ -141,3 +141,11 @@
   .mensajeCorrecto{
     background-color: rgba(255, 255, 255, 0.548);
   }
+  /* ***************************
+          informazioaIkusi.PHP
+  *******************************/
+  .comentariosContainer{
+    background-color: rgba(255, 151, 92, 0.548);
+    border: solid 2px rgba(255, 152, 92, 0.829);
+
+  }

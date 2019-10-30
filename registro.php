@@ -30,7 +30,7 @@
 
             <input type="reset" value="Borrar" id="borrar" />
         </form>
-        <form method="POST" action="Hasiera.html">
+        <form method="POST" action="hasieraLog.php">
             <input type="submit" value="Atzera">
         </form>
 
@@ -71,7 +71,6 @@
                     return false;
             }
             function insertarUsuario($CONT, $CORR, $NOMB, $konexioa){
-            	$CONT=password_hash($CONT, PASSWORD_DEFAULT);
             	$sentencia = $konexioa->prepare("INSERT INTO usuarios(CORR, NOMB, CONT) VALUES (?, ?, ?);");
             	$resultado = $sentencia->execute([$CORR, $NOMB, $CONT]); # Pasar en el mismo orden de los ?
             
@@ -82,6 +81,7 @@
 
 
             ?>
+            
     </body>
 
 </html>
