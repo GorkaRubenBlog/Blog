@@ -30,11 +30,7 @@
 
             <input type="reset" value="Borrar" id="borrar" />
         </form>
-<<<<<<< HEAD
         <form method="POST" action="hasieraLog.php">
-=======
-        <form method="POST" action="Hasiera.html">
->>>>>>> 7dcd1c873f81a8dd49e3f13c42c65a2f16c9a127
             <input type="submit" value="Atzera">
         </form>
 
@@ -75,21 +71,19 @@
                     return false;
             }
             function insertarUsuario($CONT, $CORR, $NOMB, $konexioa){
-            	$CONT=password_hash($CONT, PASSWORD_DEFAULT);
+                $CONT_HASH=hash("sha256", $CONT);
             	$sentencia = $konexioa->prepare("INSERT INTO usuarios(CORR, NOMB, CONT) VALUES (?, ?, ?);");
-            	$resultado = $sentencia->execute([$CORR, $NOMB, $CONT]); # Pasar en el mismo orden de los ?
+            	$resultado = $sentencia->execute([$CORR, $NOMB, $CONT_HASH]); # Pasar en el mismo orden de los ?
             
             	if($resultado === TRUE) echo "<p class='mensajeCorrecto'>Insertado correctamente</p>";
             	else echo "<p class='mensajeError'>Algo salió mal. Por favor verifica que la tabla exista</p>";
             }
+            
 
 
 
             ?>
-<<<<<<< HEAD
             
-=======
->>>>>>> 7dcd1c873f81a8dd49e3f13c42c65a2f16c9a127
     </body>
 
 </html>
