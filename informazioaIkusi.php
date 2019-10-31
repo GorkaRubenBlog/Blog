@@ -9,60 +9,29 @@
         <!-- CSS de w3schools -->
         <!-- <link rel='stylesheet' href='Blog.css' type='text/css'> -->
         <!--link rel='shortcut icon' type='image/x-icon' href='logoBlack.png' />-->
+   
     </head>
     <header>
         <?php 
-        if(!isset($_POST["IND"]))exit();    
-       
-        $LOG = $_POST["LOG"];
-        echo $LOG;
-
-        include_once "konexioa.php";
-        $i=0;
-        $infos=array();
-        $indes=array();
-
-        $sql = "SELECT * FROM informazioa";
-        foreach ($konexioa->query($sql) as $row) {
-            array_push($indes,$row["COD"]);
-            array_push($infos,$row["TITULO"]);
-                     }   
-            #Si todo va bien, se ejecuta esta parte del código...
-            $CORR = "";
-            $CONT = "";
-            $LOGGED = FALSE;
-            $LOG = $_POST["LOG"];
-            $VARI ="openForm()";
-            $IND = $_POST["IND"];
-            if(!isset($_POST["LOG"])){}else{
-                  $LOG = $_POST["LOG"];
-                    $LOGGED = TRUE;
-                    $VARI = "";
-            }
-            if(!isset($_POST["CORR"])||!isset($_POST["CONT"])){}else{
-                
-            $CORR = $_POST["CORR"];
-            $CONT = $_POST["CONT"];
-        
-
-            echo $LOGGED;
-            if($LOGGED==FALSE){
-                        #Salir si alguno de los datos no está presente
-                $sql = "SELECT * FROM usuarios WHERE CORR='$CORR' AND CONT='$CONT'";
-                echo $sql;
-                foreach ($konexioa->query($sql) as $row) {
-                       $LOGGED = TRUE;
-                       $user = $row["NOMB"];
-                       $VARI = "";
-                       $LOG = $user;
-                             }  
-                            }
-                        }
+          
+    /*-----------------------OBTENER SESSION------*/
+                       
+                          include_once "konexioa.php";
+                          $i=0;
+                          $infos=array();
+                          $indes=array();
+                          $VARI="openForm()";
+                      /*-----------------------OBTENER SESSION------*/
                   
-                        
-                           
-                           
-                        
+                          $sql = "SELECT * FROM informazioa";
+                          foreach ($konexioa->query($sql) as $row) {
+                              array_push($indes,$row["COD"]);
+                              array_push($infos,$row["TITULO"]);
+                  
+                          }
+                          include("Sessiones.php");
+                          $IND=$_SESSION["index"];
+
 ?>
         <!-- Logo Eta izena-->
         <!-- Logo-->
@@ -73,9 +42,14 @@
         </section>
         <!-- Login-->
         <section id="login">
-            <button onclick=<?php echo $VARI?>><?php echo $LOG?></button>
+            <button onclick=<?php echo $VARI?>><?php if(!isset($_SESSION["USU"])){echo "loggin";}
+                else{echo $_SESSION["USU"];}?></button>
                 <form method="POST" action="<?php echo $_SERVER["PHP_SELF"] ?>">
-                    <button type="submit" onclic="<?php  $user=""; $LOG="login"  ?>">loggout</button>
+                    <button type="submit" onclick="<?php  
+                    unset( $_SESSION["USU"]) ;
+                    unset($_SESSION["COD"]);
+                    session_destroy(); ?>"
+                    value="<?php echo $IND ?>" name="IND">loggout</button>
                 </form>
         </section>
         <!--Pop-Up----->
@@ -89,7 +63,9 @@
               <label for="psw"><b>Password</b></label>
               <input type="password" placeholder="Enter Password" name="CONT" required>
           
+              <button type="hidden"  value="<?php echo $IND ?>" name="IND">Login</button>
               <button type="submit" class="btn">Login</button>
+
               <button class="btn"><a href='registro.php'>registratu</a></button>
               <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
             </form>
@@ -140,9 +116,8 @@
         <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]?>">
             <p>Sartu komentario bat:</p>
                 <input required id="komentarioak" name="komentarioak" type="text" placeholder="Idatzi komentaroa...">
-                <input type="submit" id="sortu" onClick="setTimeout(function(){location.reload();}, 100);" value="Sortu">
+                <input type="submit" id="sortu" onclick="setTimeout(function(){location.reload();}, 100);" value="Sortu">
                 <input type="hidden" value="<?php echo $IND?>" name="IND">
-                <input type="hidden" value="<?php echo $LOG?>" name="LOG">
         <form>
        
             <h3>Komentarioak</h3>

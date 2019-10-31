@@ -25,21 +25,22 @@
     border-left-color: slateblue;
     
   }
+  /*----------HEADER---HASIERA---------*/
   #logo {
     float:left;
-    width: 50%;
+    width: 30%;
     padding-left: 10px;
   }
   #login{
     float: right;
-    width: 49%;
+    width: 10%;
     padding-right: 10px;
   }
-  footer{
+  .footer{
     background-color:#553600 ;
     height:100%;
   }
- 
+ /*------------HASIERA INGFORMAZIOAK--------------*/
   .grid-contenedor[class*="grid-contenedor"]{
     display: grid;
     margin: 10px;
