@@ -76,8 +76,9 @@
     
     <div class="container">
          <nav class="navbar navbar-expand-lg navbar-light" style="background-color: red";>
-               <a class="navbar-brand" href="crearNoticia.php">albiste zortu</a>
-               <a class="navbar-brand" href="hasieraLog.php">hasiera</a>
+
+               <a class="navbar-brand"  href="crearNoticia.php">albiste zortu</a>
+               <a class="navbar-brand"  href="hasieraLog.php">hasiera</a>
 
                <?php if(isset($_SESSION['ADM'])){
                    if($_SESSION['ADM']=1){
