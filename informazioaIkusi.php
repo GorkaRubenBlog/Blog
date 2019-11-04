@@ -44,13 +44,14 @@
         <section id="login">
             <button onclick=<?php echo $VARI?>><?php if(!isset($_SESSION["USU"])){echo "loggin";}
                 else{echo $_SESSION["USU"];}?></button>
+               <?php if(isset($_SESSION["USU"])){ ?>
                 <form method="POST" action="<?php echo $_SERVER["PHP_SELF"] ?>">
-                    <button type="submit" onclick="<?php  
+                    <button type="submit" onClick="<?php  
                     unset( $_SESSION["USU"]) ;
-                    unset($_SESSION["COD"]);
-                    session_destroy(); ?>"
-                    value="<?php echo $IND ?>" name="IND">loggout</button>
+
+                    session_destroy(); ?>">loggout</button>
                 </form>
+                <?php } ?>
         </section>
         <!--Pop-Up----->
         <div class="form-popup" id="myForm">
@@ -63,16 +64,34 @@
               <label for="psw"><b>Password</b></label>
               <input type="password" placeholder="Enter Password" name="CONT" required>
           
-              <button type="hidden"  value="<?php echo $IND ?>" name="IND">Login</button>
               <button type="submit" class="btn">Login</button>
 
-              <button class="btn"><a href='registro.php'>registratu</a></button>
+              <a  class="btn" href='registro.php'>registratu</a>
               <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
             </form>
 
           </div>
     </header>
     <body>
+    
+    <div class="container">
+         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: red";>
+               <a class="navbar-brand" href="crearNoticia.php">albiste zortu</a>
+               <a class="navbar-brand" href="hasieraLog.php">hasiera</a>
+
+               <?php if(isset($_SESSION['ADM'])){
+                   if($_SESSION['ADM']=1){
+                   ?>
+               <a class="navbar-brand" href="eliminarComentario.php">Iruzkin ezabatu</a>
+               <a class="navbar-brand" href="eliminarNoticia.php">Albistea ezabatu</a>
+               <a class="navbar-brand" href="eliminarUsuario.php">Erabiltzailea ezabatu</a>
+               <a class="navbar-brand" href="modificaUsuario.php">Erabiltzailea aldatu</a>
+
+                <?php  } 
+            }?>
+         </nav>
+        </div>
+
     <?php
     $comen=array();
     include_once "konexioa.php";

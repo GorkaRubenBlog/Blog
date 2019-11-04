@@ -12,21 +12,19 @@ function iniciar() {
 }
 function izenaBalidatu() {
     var elemento = document.getElementById("NOMB");
-    // if(elemento.value==""){
-    //     error2(elemento, "Debe introducir un nombre");
-    // }
-    if (!elemento.checkValidity()) {
+
+    if (!elemento.checkValidity()){
         if (elemento.validity.valueMissing) {
             error2(elemento, "Izen bat sartu behar duzu");
-        }
+         }
         if (elemento.validity.patternMismatch) {
             error2(elemento, "Izena bakarrik letras osatuta egon behar da");
-        }
+         }
         //error(elemento);
         return false;
-    }
+        }
     return true;
-}
+    }
 
 function emailBalidatu() {
     var elemento = document.getElementById("CORR");
@@ -36,15 +34,15 @@ function emailBalidatu() {
     if (!elemento.checkValidity()) {
         if (elemento.validity.valueMissing) {
             error2(elemento, "Emaila formatu hau euki behar du  Ej.:aaaa@aaaa.com");
-        }
+            }
         if (elemento.validity.patternMismatch) {
-            error2(elemento, "Emaila formatu hau euki behar du Ej.:aaaa@aaaa.com");
-        }
+               error2(elemento, "Emaila formatu hau euki behar du Ej.:aaaa@aaaa.com");
+            }
         //error(elemento);
         return false;
-    }
+         }
     return true;
-}
+    }
 
 function kodigoaBalidatu() {
     var elemento = document.getElementById("COD");

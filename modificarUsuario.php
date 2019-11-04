@@ -8,7 +8,8 @@
 
     </head>
     <body>
-       
+       <?php  if(!isset($_POST["COD"])){ ?>
+
         <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]?>">
             <p>Codigo de usuario:</p>
             <input required id="COD" name="COD" type="number" min="1"  placeholder="Idatzi kodigoa...">
@@ -16,7 +17,9 @@
             <p id="mensajeError" class="mensajeError"></p>
             <input type="submit" id="hautatu" value="Hautatu">
         </form>
+       <?php } ?>
         <?php
+        $HOLA="HOLA";
             #Salir si alguno de los datos no está presente
             if(!isset($_POST["COD"])) exit();
             #Si todo va bien, se ejecuta esta parte del código...
@@ -24,14 +27,17 @@
             $COD = $_POST["COD"];
             $exist=comprobarUsuario($konexioa, $COD);
             	if($exist==true){
+
                     ?>
-                    <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]?>">
+                    <form method="POST">
                     <p>Nombre de usuario:</p>
                     <input required id="NOMB" name="NOMB" type="text" placeholder="Sartu erabiltzailearen izena" value="
 <?php
+
                         $sql= "SELECT NOMB FROM usuarios WHERE COD='$COD'";
                         foreach($konexioa->query($sql) as $row){
                             echo $row["NOMB"];
+
                         }
                         
 ?>">
@@ -54,7 +60,7 @@
                     <input required id="CONT2" name="CONT2" type="text" placeholder="Sartu erabiltzailearen pasahitza" >
                     <br><br>
                     <input type="submit" id="gorde" value="Gorde">
-                    <form>
+                    </form>
                     <?php
                         #Salir si alguno de los datos no está presente
                         if(!isset($_POST["NOMB"])|| !isset($_POST["CORR"])|| !isset($_POST["CONT"])||!isset($_POST["CONT2"])) exit();
@@ -104,7 +110,9 @@
             }
             function updateUsuario($CONT, $CORR, $NOMB, $konexioa){
                 $CONT_HASH=hash("sha256", $CONT);
-            	$sentencia = $konexioa->prepare("UPDATE usuarios SET CORR, NOMB, CONT VALUES (?, ?, ?);");
+                echo "<script>console.log('Debug Objects: " . $HOLA . "' );</script>";
+
+            	$sentencia = $konexioa->prepare("UPDATE usuarios SET CORR='2222',NOMB='2222',CONT='22222' WHERE COD='11'");
             	$resultado = $sentencia->execute([$CORR, $NOMB, $CONT_HASH]); # Pasar en el mismo orden de los ?
             
             	if($resultado === TRUE) echo "<p class='mensajeCorrecto'>Insertado correctamente</p>";

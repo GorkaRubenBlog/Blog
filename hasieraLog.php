@@ -36,20 +36,17 @@
             <H1>BLOG IZENA</H1>
         </section>
         <!-- Login-->
-<<<<<<< HEAD
-=======
-
->>>>>>> d2a03876c7e3c007f638e26cec0bda0daadc2240
         <section id="login">
             <button onclick=<?php echo $VARI?>><?php if(!isset($_SESSION["USU"])){echo "loggin";}
                 else{echo $_SESSION["USU"];}?></button>
+                <?php if(isset($_SESSION["USU"])){ ?>
                 <form method="POST" action="<?php echo $_SERVER["PHP_SELF"] ?>">
                     <button type="submit" onClick="<?php  
-                    unset( $_SESSION["USU"]) ;
                     unset( $_SESSION["USU"]) ;
 
                     session_destroy(); ?>">loggout</button>
                 </form>
+                <?php } ?>
         </section>
 
         <!--Pop-Up----->
@@ -64,7 +61,8 @@
               <input type="password" placeholder="Enter Password" name="CONT" required>
           
               <button type="submit" class="btn">Login</button>
-              <button class="btn"><a href='registro.php'>registratu</a></button>
+
+              <a  class="btn" href='registro.php'>registratu</a>
               <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
             </form>
 
@@ -72,17 +70,23 @@
     </header>
     <body>
         
-        <nav>
-    
-                <button type="submit">hasiera</button>
-                <button type="submit">hasiera</button>    
-                <button type="submit">hasiera</button>
-        </nav>
-        <div class="grid-contenedor">
-<<<<<<< HEAD
-=======
+        <div class="container">
+         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: red";>
+               <a class="navbar-brand" href="crearNoticia.php">albiste zortu</a>
+               <?php if(isset($_SESSION['ADM'])){
+                   if($_SESSION['ADM']=1){
+                   ?>
+               <a class="navbar-brand" href="eliminarComentario.php">Iruzkin ezabatu</a>
+               <a class="navbar-brand" href="eliminarNoticia.php">Albistea ezabatu</a>
+               <a class="navbar-brand" href="eliminarUsuario.php">Erabiltzailea ezabatu</a>
+               <a class="navbar-brand" href="modificaUsuario.php">Erabiltzailea aldatu</a>
 
->>>>>>> d2a03876c7e3c007f638e26cec0bda0daadc2240
+                <?php  } 
+            }?>
+         </nav>
+        </div>
+
+        <div class="grid-contenedor">
         <?php for($i=0;$i<sizeof($infos);$i++){ ?>
             <div class="Def-1">
                 <form method="POST" action="informazioaIkusi.php">
@@ -94,11 +98,6 @@
                 </form>
             </div>
          <?php }?>
-<<<<<<< HEAD
-           
-            
-=======
->>>>>>> d2a03876c7e3c007f638e26cec0bda0daadc2240
         </div>
   
         <footer>

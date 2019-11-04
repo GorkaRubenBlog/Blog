@@ -1,4 +1,4 @@
-
+  @import url("https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css");
   html {
     font-family: "Lucida Sans", sans-serif;
     background-color: #FFE0AA;
@@ -10,21 +10,7 @@
     width: 100%;
 
   }
-  nav{
-    background-color:red; 
-  }
-  nav a{
-    text-justify: auto;
-    margin-right: 12% ;
-    margin-left: 12%;
-  }
-  
-  nav a:last-of-type{
-    border-left-width: 2px;
-    border-left-style:solid ;
-    border-left-color: slateblue;
-    
-  }
+ 
   /*----------HEADER---HASIERA---------*/
   #logo {
     float:left;
