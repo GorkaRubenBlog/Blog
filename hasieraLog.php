@@ -36,10 +36,6 @@
             <H1>BLOG IZENA</H1>
         </section>
         <!-- Login-->
-<<<<<<< HEAD
-=======
-
->>>>>>> d2a03876c7e3c007f638e26cec0bda0daadc2240
         <section id="login">
             <button onclick=<?php echo $VARI?>><?php if(!isset($_SESSION["USU"])){echo "loggin";}
                 else{echo $_SESSION["USU"];}?></button>
@@ -79,10 +75,6 @@
                 <button type="submit">hasiera</button>
         </nav>
         <div class="grid-contenedor">
-<<<<<<< HEAD
-=======
-
->>>>>>> d2a03876c7e3c007f638e26cec0bda0daadc2240
         <?php for($i=0;$i<sizeof($infos);$i++){ ?>
             <div class="Def-1">
                 <form method="POST" action="informazioaIkusi.php">
@@ -94,11 +86,8 @@
                 </form>
             </div>
          <?php }?>
-<<<<<<< HEAD
            
             
-=======
->>>>>>> d2a03876c7e3c007f638e26cec0bda0daadc2240
         </div>
   
         <footer>
