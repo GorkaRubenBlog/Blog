@@ -4,10 +4,12 @@
 <html lang="es">
     <head>
         <title>Wiki Proiektua</title>
+        
         <!-- CSS de w3schools -->
         <link rel='stylesheet' href='Blog.css' type='text/css'>
+        
         <script src="LogForm.js"></script>
-
+        <script src="gertaerak.js"></script>
         <!--link rel='shortcut icon' type='image/x-icon' href='logoBlack.png' />-->
   
     </head>
@@ -39,13 +41,14 @@
         <section id="login">
             <button onclick=<?php echo $VARI?>><?php if(!isset($_SESSION["USU"])){echo "loggin";}
                 else{echo $_SESSION["USU"];}?></button>
+                <?php if(isset($_SESSION["USU"])){ ?>
                 <form method="POST" action="<?php echo $_SERVER["PHP_SELF"] ?>">
                     <button type="submit" onClick="<?php  
-                    unset( $_SESSION["USU"]) ;
                     unset( $_SESSION["USU"]) ;
 
                     session_destroy(); ?>">loggout</button>
                 </form>
+                <?php } ?>
         </section>
 
         <!--Pop-Up----->
@@ -60,7 +63,8 @@
               <input type="password" placeholder="Enter Password" name="CONT" required>
           
               <button type="submit" class="btn">Login</button>
-              <button class="btn"><a href='registro.php'>registratu</a></button>
+
+              <a  class="btn" href='registro.php'>registratu</a>
               <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
             </form>
 
@@ -68,12 +72,23 @@
     </header>
     <body>
         
-        <nav>
-    
-                <button type="submit">hasiera</button>
-                <button type="submit">hasiera</button>    
-                <button type="submit">hasiera</button>
-        </nav>
+        <div class="container">
+         <nav  class="navbar navbar-expand-lg navbar-light" style="background-color: red";>
+               <a class="navbar-brand" href="crearNoticia.php">albiste zortu</a>
+               <?php if(isset($_SESSION['ADM'])){
+                   if($_SESSION['ADM']=1){
+                   ?>
+               <a id="iruzkinEzabatu" class="navbar-brand" href="eliminarComentario.php">Iruzkin ezabatu</a>
+               <a id="albisteaEzabatu" class="navbar-brand" href="eliminarNoticia.php">Albistea ezabatu</a>
+               <a id="erabiltzaileaEzabatu" class="navbar-brand" href="eliminarUsuario.php">Erabiltzailea ezabatu</a>
+               <a id="erabiltzaileaAldatu" class="navbar-brand" href="modificarUsuario.php">Erabiltzailea aldatu</a>
+               <a id="KomentarioaEzabatu" class="navbar-brand" href="eliminarComentario.php">Komentarioa Ezabatu</a>
+
+                <?php  } 
+            }?>
+         </nav>
+        </div>
+
         <div class="grid-contenedor">
         <?php for($i=0;$i<sizeof($infos);$i++){ ?>
             <div class="Def-1">
@@ -82,7 +97,7 @@
                 <input type="hidden" value="<?php echo $_SESSION['ID']?>"name="cod">
 
                <p><?php echo $infos[$i];?></p> 
-                <input type="submit">
+                <input type="submit" >
                 </form>
             </div>
          <?php }?>

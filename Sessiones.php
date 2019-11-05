@@ -9,18 +9,20 @@
     echo "log enttador";
         }
     if(isset($_POST["IND"])){
-        echo "hola";
         $_SESSION['index'] = $_POST["IND"];
 
     }
 if(!isset($_POST["CORR"])||!isset($_POST["CONT"])){}else{
     $CORR = $_POST["CORR"];
     $CONT = $_POST["CONT"];
-        $sql = "SELECT * FROM usuarios WHERE CORR='$CORR' AND CONT='$CONT'";    
+    $CONT_HASH=hash("sha256", $CONT);
+
+        $sql = "SELECT * FROM usuarios WHERE CORR='$CORR' AND CONT='$CONT_HASH'";    
 foreach ($konexioa->query($sql) as $row) {
 $_SESSION['LOG'] = TRUE;
 $_SESSION['USU'] = $row["NOMB"];
 $_SESSION['ID'] =$row["COD"];
+$_SESSION['ADM'] =$row["ADM"];
 $VARI ="";
 }
 }
@@ -29,6 +31,8 @@ if($_SESSION['LOG']==TRUE){
     foreach ($konexioa->query($sql) as $row) {
         $VARI="";
     $_SESSION['USU'] = $row["NOMB"];
+    $_SESSION['ADM'] =$row["ADM"];
+
     }
 }
 ?>
