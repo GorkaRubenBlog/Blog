@@ -4,11 +4,12 @@
 <html lang="es">
     <head>
         <title>Wiki Proiektua</title>
+        
         <!-- CSS de w3schools -->
         <link rel='stylesheet' href='Blog.css' type='text/css'>
+        
         <script src="LogForm.js"></script>
-
-
+        <script src="gertaerak.js"></script>
         <!--link rel='shortcut icon' type='image/x-icon' href='logoBlack.png' />-->
   
     </head>
@@ -90,6 +91,7 @@
                <a class="navbar-brand" href="eliminarNoticia.php?Session=<?php echo $_SESSION['ID']?>">Albistea ezabatu</a>
                <a class="navbar-brand" href="eliminarUsuario.php?Session=<?php echo $_SESSION['ID']?>">Erabiltzailea ezabatu</a>
                <a class="navbar-brand" href="modificaUsuario.php?Session=<?php echo $_SESSION['ID']?>">Erabiltzailea aldatu</a>
+               <a class="navbar-brand" href="eliminarComentario.php?Session=<?php echo $_SESSION['ID']?>">Komentarioa Ezabatu</a>
 
                 <?php  } 
             }?>
@@ -104,10 +106,12 @@
                 <input type="hidden" value="<?php echo $_SESSION['ID']?>"name="cod">
 
                <p><?php echo $infos[$i];?></p> 
-                <input type="submit">
+                <input type="submit" >
                 </form>
             </div>
          <?php }?>
+           
+            
         </div>
   
         <footer>

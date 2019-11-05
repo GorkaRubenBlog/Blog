@@ -5,6 +5,8 @@
         <title>Blog Registro</title>
         <link rel='stylesheet' href='Blog.css' type='text/css'>
         <script src="LogForm.js"></script>
+        <script src="gertaerak.js"></script>
+
 
         <!-- CSS de w3schools -->
         <!-- <link rel='stylesheet' href='Blog.css' type='text/css'> -->
@@ -96,6 +98,7 @@
                <a class="navbar-brand" href="eliminarNoticia.php?Session=<?php echo $_SESSION['ID']?>">Albistea ezabatu</a>
                <a class="navbar-brand" href="eliminarUsuario.php?Session=<?php echo $_SESSION['ID']?>">Erabiltzailea ezabatu</a>
                <a class="navbar-brand" href="modificaUsuario.php?Session=<?php echo $_SESSION['ID']?>">Erabiltzailea aldatu</a>
+               <a class="navbar-brand" href="eliminarComentario.php?Session=<?php echo $_SESSION['ID']?>">Komentarioa Ezabatu</a>
 
                 <?php  } 
             }?>
@@ -111,11 +114,6 @@
     }
     $reves= array_reverse($comen);
 ?>
-    <nav>
-            <a>hasiera</a>
-            <a>perfil</a>
-            <a>egileak</a>
-        </nav>
 
         <h1><?php
             include_once "konexioa.php";

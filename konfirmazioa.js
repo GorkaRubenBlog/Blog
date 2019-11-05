@@ -7,9 +7,13 @@ function iniciar() {
         document.getElementById("ezabatu").addEventListener('click', balidatuKodigoa , false);
     if (document.getElementById("sortuAlbistea"))
         document.getElementById("sortuAlbistea").addEventListener('click', balidatuAlbistea , false);
-
+    if(document.getElementById("gorde"))
+        document.getElementById("gorde").addEventListener("click", balidatuErabiltzaileSortuta, false);
 
 }
+//****************************
+//Balidatu erabiltzaile berria
+//****************************
 function izenaBalidatu() {
     var elemento = document.getElementById("NOMB");
 
@@ -44,6 +48,23 @@ function emailBalidatu() {
     return true;
     }
 
+function balidatu(e) {
+    borrarError();
+    if (izenaBalidatu() && emailBalidatu() && confirm("Erabiltzailari datuak ondo sartu diozu?")) {
+        return true
+    } else {
+        e.preventDefault();
+        return false;
+    }
+}
+//***********************************
+//Amaitu Balidatu erabiltzaile berria
+//***********************************
+
+//**************
+//Balidatu kodea
+//**************
+
 function kodigoaBalidatu() {
     var elemento = document.getElementById("COD");
     if(elemento.value==""){
@@ -63,17 +84,14 @@ function balidatuKodigoa(e) {
         return false;
     }
 }
+//*********************
+//Amaitu Balidatu kodea
+//*********************
 
-function balidatu(e) {
-    borrarError();
-    if (izenaBalidatu() && emailBalidatu() && confirm("Erabiltzailari datuak ondo sartu diozu?")) {
-        return true
-    } else {
-        e.preventDefault();
-        return false;
-    }
-}
 
+//******************
+// Balidatu Albistea
+//******************
 function tituluaBalidatu() {
     var elemento = document.getElementById("TITULO");
     // if(elemento.value==""){
@@ -104,6 +122,58 @@ function testuaBalidatu() {
 function balidatuAlbistea(e) {
     borrarError();
     if (tituluaBalidatu() && testuaBalidatu() && confirm("Albistea sortu nahi duzu?")) {
+        return true
+    } else {
+        e.preventDefault();
+        return false;
+    }
+}
+//************************
+//Amaitu Balidatu Albistea
+//************************
+
+//******************************
+//Balidatu Erabiltzaile aldatuta
+//******************************
+function izenaBalidatuErabiltzaileSortuta() {
+    var elemento = document.getElementById("NOMB");
+    // if(elemento.value==""){
+    //     error2(elemento, "Debe introducir un nombre");
+    // }
+    if (!elemento.checkValidity()) {
+        if (elemento.validity.valueMissing) {
+            error2(elemento, "Izen bat sartu behar duzu");
+        }
+        if (elemento.validity.patternMismatch) {
+            error2(elemento, "Izena bakarrik letras osatuta egon behar da");
+        }
+        //error(elemento);
+        return false;
+    }
+    return true;
+}
+
+function emailBalidatuErabiltzaileSortuta() {
+    var elemento = document.getElementById("CORR");
+    // if(elemento.value==""){
+    //     error2(elemento, "Debe introducir un email");
+    // }
+    if (!elemento.checkValidity()) {
+        if (elemento.validity.valueMissing) {
+            error2(elemento, "Emaila formatu hau euki behar du  Ej.:aaaa@aaaa.com");
+        }
+        if (elemento.validity.patternMismatch) {
+            error2(elemento, "Emaila formatu hau euki behar du Ej.:aaaa@aaaa.com");
+        }
+        //error(elemento);
+        return false;
+    }
+    return true;
+}
+
+function balidatuErabiltzaileSortuta(e) {
+    borrarError();
+    if (izenaBalidatuErabiltzaileSortuta() && emailBalidatuErabiltzaileSortuta() && confirm("Erabiltzailari datuak ondo sartu diozu?")) {
         return true
     } else {
         e.preventDefault();

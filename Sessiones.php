@@ -27,7 +27,7 @@ foreach ($konexioa->query($sql) as $row) {
 $_SESSION['LOG'] = TRUE;
 $_SESSION['USU'] = $row["NOMB"];
 $_SESSION['ID'] =$row["COD"];
-$_SESSION['ADM'] =$row["ADMIN"];
+$_SESSION['ADM'] =$row["ADM"];
 $VARI ="";
 }
 }
@@ -36,7 +36,7 @@ if($_SESSION['LOG']==TRUE){
     foreach ($konexioa->query($sql) as $row) {
         $VARI="";
     $_SESSION['USU'] = $row["NOMB"];
-    $_SESSION['ADM'] =$row["ADMIN"];
+    $_SESSION['ADM'] =$row["ADM"];
 
     }
 

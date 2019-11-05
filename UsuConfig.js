@@ -42,5 +42,5 @@ function UsuConfig(icon, backg, izen){
             var texto = ik.getikaskideIzena();
             return texto;
         }
-    }
+    
   
