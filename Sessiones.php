@@ -3,7 +3,7 @@
 <?php
     session_start();
     $_SESSION['LOG'] = FALSE;
-   if(isset($_POST["cod"])){
+   if(isset($_POST["cod"])||isset($_SESSION['ID'])){
     $_SESSION['LOG']=TRUE;
     $_SESSION['ID'] = $_POST["cod"];
     echo "log enttador";
@@ -34,5 +34,6 @@ if($_SESSION['LOG']==TRUE){
     $_SESSION['ADM'] =$row["ADM"];
 
     }
+
 }
 ?>

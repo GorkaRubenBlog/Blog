@@ -21,7 +21,6 @@
         $indes=array();
         $VARI="openForm()";
     /*-----------------------OBTENER SESSION------*/
-
         $sql = "SELECT * FROM informazioa";
         foreach ($konexioa->query($sql) as $row) {
             array_push($indes,$row["COD"]);
@@ -29,7 +28,7 @@
 
         }
         include("Sessiones.php");
-                            
+
 ?>
         <!-- Logo Eta izena-->
         <!-- Logo-->
@@ -39,7 +38,7 @@
         </section>
         <!-- Login-->
         <section id="login">
-            <button onclick=<?php echo $VARI?>><?php if(!isset($_SESSION["USU"])){echo "loggin";}
+            <button id="NombLog"onclick=<?php echo $VARI?>><?php if(!isset($_SESSION["USU"])){echo "loggin";}
                 else{echo $_SESSION["USU"];}?></button>
                 <?php if(isset($_SESSION["USU"])){ ?>
                 <form method="POST" action="<?php echo $_SERVER["PHP_SELF"] ?>">
