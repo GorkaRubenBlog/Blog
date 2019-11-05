@@ -1,12 +1,17 @@
 
 
 <?php
-    session_start();
-    $_SESSION['LOG'] = FALSE;
-   if(isset($_POST["cod"])||isset($_SESSION['ID'])){
+    if(isset($_SESSION["LOG"])){}
+    else{
+        $_SESSION['LOG'] = FALSE;
+    }
+    if(isset($_SESSION["ID"])){
+        $_SESSION['LOG'] = TRUE;
+
+    }
+   if(isset($_POST["cod"])){
     $_SESSION['LOG']=TRUE;
     $_SESSION['ID'] = $_POST["cod"];
-    echo "log enttador";
         }
     if(isset($_POST["IND"])){
         $_SESSION['index'] = $_POST["IND"];

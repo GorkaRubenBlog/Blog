@@ -29,6 +29,7 @@
                               array_push($infos,$row["TITULO"]);
                   
                           }
+                          session_start();
                           include("Sessiones.php");
                           $IND=$_SESSION["index"];
 
@@ -46,6 +47,8 @@
                 else{echo $_SESSION["USU"];}?></button>
                <?php if(isset($_SESSION["USU"])){ ?>
                 <form method="POST" action="<?php echo $_SERVER["PHP_SELF"] ?>">
+                <input type="hidden" value="<?php echo $IND?>" name="IND">
+
                     <button type="submit" onClick="<?php  
                     unset( $_SESSION["USU"]) ;
 
@@ -77,16 +80,22 @@
     <div class="container">
          <nav class="navbar navbar-expand-lg navbar-light" style="background-color: red";>
 
-               <a class="navbar-brand"  href="crearNoticia.php">albiste zortu</a>
-               <a class="navbar-brand"  href="hasieraLog.php">hasiera</a>
+         <a class="navbar-brand" href="crearNoticia.php?Session=<?php if(isset($_SESSION['ID'])){
+                   echo $_SESSION['ID'];
+                }else{
+                       echo 0 ;}?>">albiste zortu</a>
+               <a class="navbar-brand"  href="hasieraLog.php?Session=<?php if(isset($_SESSION['ID'])){
+                   echo $_SESSION['ID'];
+                }else{
+                       echo 0 ;}?>">albiste zortu</a>
 
                <?php if(isset($_SESSION['ADM'])){
                    if($_SESSION['ADM']=1){
                    ?>
-               <a class="navbar-brand" href="eliminarComentario.php">Iruzkin ezabatu</a>
-               <a class="navbar-brand" href="eliminarNoticia.php">Albistea ezabatu</a>
-               <a class="navbar-brand" href="eliminarUsuario.php">Erabiltzailea ezabatu</a>
-               <a class="navbar-brand" href="modificaUsuario.php">Erabiltzailea aldatu</a>
+               <a class="navbar-brand" href="eliminarComentario.php?Session=<?php echo $_SESSION['ID']?>" value>Iruzkin ezabatu</a>
+               <a class="navbar-brand" href="eliminarNoticia.php?Session=<?php echo $_SESSION['ID']?>">Albistea ezabatu</a>
+               <a class="navbar-brand" href="eliminarUsuario.php?Session=<?php echo $_SESSION['ID']?>">Erabiltzailea ezabatu</a>
+               <a class="navbar-brand" href="modificaUsuario.php?Session=<?php echo $_SESSION['ID']?>">Erabiltzailea aldatu</a>
 
                 <?php  } 
             }?>
