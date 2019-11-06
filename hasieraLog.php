@@ -82,6 +82,7 @@
                <a id="erabiltzaileaEzabatu" class="navbar-brand" href="eliminarUsuario.php">Erabiltzailea ezabatu</a>
                <a id="erabiltzaileaAldatu" class="navbar-brand" href="modificarUsuario.php">Erabiltzailea aldatu</a>
                <a id="KomentarioaEzabatu" class="navbar-brand" href="eliminarComentario.php">Komentarioa Ezabatu</a>
+               <a id="tablaUsuarios" class="navbar-brand" href="tablaUsuarios.php">Erabiltzaileen taula</a>
 
                 <?php  } 
             }?>

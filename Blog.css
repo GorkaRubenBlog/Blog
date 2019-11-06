@@ -135,3 +135,16 @@
     border: solid 2px rgba(255, 152, 92, 0.829);
 
   }
+
+    /* ***************************
+          TABLAUSUARIOS.PHP
+  *******************************/
+  table *{
+    text-align: center;
+    border: black 2px solid;
+    padding: 4px;
+  }
+.tabla{
+  margin: 0 auto;
+
+}
