@@ -82,7 +82,7 @@
          <nav class="navbar navbar-expand-lg navbar-light" style="background-color: red";>
 
                <?php if(isset($_SESSION['ADM'])){
-                   if($_SESSION['ADM']=1){
+                   if($_SESSION['ADM']==1){
                    ?>
                <a class="navbar-brand" href="eliminarComentario.php?Session=<?php echo $_SESSION['ID']?>">Iruzkin ezabatu</a>
                <a class="navbar-brand" href="eliminarNoticia.php?Session=<?php echo $_SESSION['ID']?>">Albistea ezabatu</a>

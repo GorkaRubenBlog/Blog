@@ -96,30 +96,28 @@
             }?>
          </nav>
         </div>
-        <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]?>">
-            <p>Kolorea:</p>
-            <select name="select">
-                <option value="value1">Default</option> 
-                <option value="white" selected>Zuria</option>
-                <option value="black">Beltza</option>
-            </select>            
-            <br><br>
-            <p>Nav-Colore:</p>
-            <select name="select">
-                <option value="white" selected>Zuria</option>
-                <option value="red">Gorria</option>
-            </select> 
-            <br><br>
-            <p>Icon:</p>
-            <input required id="CONT" name="CONT" type="password" placeholder="Idatzi pasahitza...">
-            <br><br>jaiotxe data</p>
-            <input required id="CONT" name="CONT" type="password" placeholder="Idatzi pasahitza...">
-            <br><br>
-            <input type="submit" id="sortu" value="Sortu">
-
-            <input type="reset" value="Borrar" id="borrar" />
-        </form>
-            
+             <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]?>">
+                <p>Kolorea:</p>
+                <select name="select">
+                    <option value="value1">Default</option> 
+                    <option value="white" selected>Zuria</option>
+                    <option value="black">Beltza</option>
+                </select>            
+                <br><br>
+                <p>Nav-Colore:</p>
+                <select name="select">
+                    <option value="white" selected>Zuria</option>
+                    <option value="red">Gorria</option>
+                </select> 
+                <br><br>
+                <p>Icon:</p>
+                <input required id="CONT" name="CONT" type="password" placeholder="Idatzi pasahitza...">
+                <br><br>jaiotxe data</p>
+                <input required id="CONT" name="CONT" type="password" placeholder="Idatzi pasahitza...">
+                <br><br>
+                <input type="submit" id="sortu" value="Sortu">
+                <input type="reset" value="Borrar" id="borrar" />
+            </form>
         </div>
   
         <footer>
