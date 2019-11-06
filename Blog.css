@@ -3,7 +3,14 @@
     font-family: "Lucida Sans", sans-serif;
     background-color: #FFE0AA;
   }
-  
+  body{
+    background-color: #FFE0AA;
+
+  }
+  body div{
+    background-color: #FFE0AA;
+
+   }
   header {
     background-color: #D4CF6A;
     display: inline-block;
@@ -35,6 +42,8 @@
     grid-template-columns: auto auto auto ;
     grid-gap: 20x ;
     text-align: center;
+    background-color: #FFE0AA;
+
    }
 
   [class*="Def-"]{
@@ -48,7 +57,7 @@
       margin-top: 75px;}
       .open-button {
         background-color: #555;
-        color: white;
+        color: #FFE0AA;
         padding: 16px 20px;
         border: none;
         cursor: pointer;

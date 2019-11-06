@@ -1,46 +1,39 @@
 function UsuConfig(icon, backg, izen){
-    this.icon = ic;
-    this.adina =  ad;
-    this.izen =  iz;
-    this.objektu = ikaski;
+    this.icon = icon;
+    this.izen =  izen;
+    this.backg = backg;
      
-        this.getIzena=function(){
-            return this.izena;
+        this.getIcon=function(){
+            return this.icon;
         }
-        this.getAdina=function(){
-            return this.adina;
+        this.getIzen=function(){
+            return this.izen;
 
         }
 
-        }
-        this. getIkaskide=function(){
-            return this.objektu;
+        this.getBackg=function(){
+            return this.backg;
 
         }
-        this.setIzena =function(izenberri){
-             this.izena = izenberri;
+        
+        this.setIcon=function(IconBerri){
+            this.icon = IconBerri;
 
         }
-        this.setAdina =function(adinberri){
-            this.adina = adinberri;
+        
+        this.setBackg=function(izenberri){
+            this.izen = izenberri;
 
         }
-        this.setEspezialitatea =function(espezialitatea){
-             this.espezialitatea = espezialitatea;
-
-        }
-        this.setObjektu=function(objetuberri){
-             this.objektu = objetuberri;
+        
+        this.setIzen=function(Backberri){
+            this.backg = Backberri;
 
         }
         this.erakutsi=function(){
-            var texto=  "izena:"+this.getIzena()+" adina:"+this.getAdina()+" espezialitatea:"+this.getEspezialitatea()+"ikaskidea:"+this.getIkaskide();
+            var texto=  "izena:"+this.getIzena()+" icono:"+this.getIcon()+" Kolore:"+this.getBackg();
             return texto;
         }
-        this.getikaskideIzena=function(){
-            var ik = this.getIkaskide();
-            var texto = ik.getikaskideIzena();
-            return texto;
-        }
-    
   
+    
+    }

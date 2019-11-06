@@ -80,7 +80,9 @@
         
         <div class="container">
          <nav class="navbar navbar-expand-lg navbar-light" style="background-color: red";>
-
+         <a class="navbar-brand" href="hasieraLog.php?Session=<?php if(isset($_SESSION['ID'])){
+                   echo $_SESSION['ID'];
+                }else{echo 0 ;}?>">hasiera</a>
                <?php if(isset($_SESSION['ADM'])){
                    if($_SESSION['ADM']=1){
                    ?>
@@ -94,20 +96,29 @@
             }?>
          </nav>
         </div>
+        <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]?>">
+            <p>Kolorea:</p>
+            <select name="select">
+                <option value="value1">Default</option> 
+                <option value="white" selected>Zuria</option>
+                <option value="black">Beltza</option>
+            </select>            
+            <br><br>
+            <p>Nav-Colore:</p>
+            <select name="select">
+                <option value="white" selected>Zuria</option>
+                <option value="red">Gorria</option>
+            </select> 
+            <br><br>
+            <p>Icon:</p>
+            <input required id="CONT" name="CONT" type="password" placeholder="Idatzi pasahitza...">
+            <br><br>jaiotxe data</p>
+            <input required id="CONT" name="CONT" type="password" placeholder="Idatzi pasahitza...">
+            <br><br>
+            <input type="submit" id="sortu" value="Sortu">
 
-        <div class="grid-contenedor">
-        <?php for($i=0;$i<sizeof($infos);$i++){ ?>
-            <div class="Def-1">
-                <form method="POST" action="informazioaIkusi.php">
-                <input type="hidden" value="<?php echo $indes[$i]?>" name="IND">
-                <input type="hidden" value="<?php echo $_SESSION['ID']?>"name="cod">
-
-               <p><?php echo $infos[$i];?></p> 
-                <input type="submit" >
-                </form>
-            </div>
-         <?php }?>
-           
+            <input type="reset" value="Borrar" id="borrar" />
+        </form>
             
         </div>
   

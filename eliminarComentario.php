@@ -23,6 +23,13 @@
                           $i=0;
                           $infos=array();
                           $indes=array();
+                          if(isset($_GET["Session"])){
+                            if($_GET!=0){
+                            session_start();
+                            $_SESSION['ID']=$_GET["Session"];
+                             }
+                        }
+                
                           $VARI="openForm()";
                       /*-----------------------OBTENER SESSION------*/
                   
@@ -78,22 +85,23 @@
     
     <div class="container">
          <nav class="navbar navbar-expand-lg navbar-light" style="background-color: red";>
-               <a class="navbar-brand" href="hasieraLog.php">hasiera</a>
-               <a class="navbar-brand" href="crearNoticia.php">albiste sortu</a>
-
+         <a class="navbar-brand" href="hasieraLog.php?Session=<?php if(isset($_SESSION['ID'])){
+                   echo $_SESSION['ID'];
+                }else{echo 0 ;}?>">hasiera</a>
                <?php if(isset($_SESSION['ADM'])){
                    if($_SESSION['ADM']=1){
                    ?>
-               <a class="navbar-brand" href="eliminarComentario.php">Iruzkin ezabatu</a>
-               <a class="navbar-brand" href="eliminarNoticia.php">Albistea ezabatu</a>
-               <a class="navbar-brand" href="eliminarUsuario.php">Erabiltzailea ezabatu</a>
-               <a class="navbar-brand" href="modificarUsuario.php">Erabiltzailea aldatu</a>
-               <a id="KomentarioaEzabatu" class="navbar-brand" href="eliminarComentario.php">Komentarioa Ezabatu</a>
+               <a class="navbar-brand" href="eliminarComentario.php?Session=<?php echo $_SESSION['ID']?>">Iruzkin ezabatu</a>
+               <a class="navbar-brand" href="eliminarNoticia.php?Session=<?php echo $_SESSION['ID']?>">Albistea ezabatu</a>
+               <a class="navbar-brand" href="eliminarUsuario.php?Session=<?php echo $_SESSION['ID']?>">Erabiltzailea ezabatu</a>
+               <a class="navbar-brand" href="modificarUsuario.php?Session=<?php echo $_SESSION['ID']?>">Erabiltzailea aldatu</a>
+               <a class="navbar-brand" href="eliminarComentario.php?Session=<?php echo $_SESSION['ID']?>">Komentarioa Ezabatu</a>
 
                 <?php  } 
             }?>
          </nav>
         </div>
+
         <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]?>">
             <p>Codigo del Comentario:</p>
             <input required id="COD" name="COD" type="number" min="1"  placeholder="Idatzi kodigoa...">
