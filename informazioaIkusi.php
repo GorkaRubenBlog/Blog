@@ -93,7 +93,7 @@
                    echo $_SESSION['ID'];
                 }else{echo 0 ;}?>">hasiera</a>
 
-                <?php if(isset($_SESSION['ADM'])){
+               <?php if(isset($_SESSION['ADM'])){
                     ?><a class="navbar-brand" href="crearNoticia.php?Session=<?php echo $_SESSION['ID']?>">Albiste berria</a>
                 <?php
                    if($_SESSION['ADM']==1){

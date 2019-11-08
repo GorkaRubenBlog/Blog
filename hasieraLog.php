@@ -80,6 +80,7 @@
         
         <div class="container">
          <nav id="navegador" class="navbar navbar-expand-lg navbar-light" >
+         
 
          <?php if(isset($_SESSION['ADM'])){
                     ?><a class="navbar-brand" href="crearNoticia.php?Session=<?php echo $_SESSION['ID']?>">Albiste berria</a>
