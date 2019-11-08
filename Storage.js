@@ -1,19 +1,11 @@
 window.addEventListener("load", inicio);
 var x = "Cookies Enabled: " + navigator.cookieEnabled;
 console.log(x);
-function inicio(){
+    Usu = new UsuConfig();
+    var izen= document.forms["IZEN"].value;
+    var Backg = document.forms["BG"].value;
+    var navBackg = document.forms["NBG"].value;
 
-var Usu = document.getElementById("NombLog").textContent;
-if(Usu!="loggin"){
+    Usu.setAll(izen,Backg,navBackg);
+window.localStorage.setItem("Config",Usu);
 
-    window.localStorage.setItem("Usuario",Usu);
-}
-}
-
-function getInfo(){
-    
-}
-function getUsu(){
-    return window.localStorage.getItem("Usuario");
-
-}
