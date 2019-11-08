@@ -22,6 +22,25 @@
                           $i=0;
                           $infos=array();
                           $indes=array();
+                         
+                          if(isset($_GET["Session"])){
+                            if($_GET!=0){
+                            session_start();
+                            $_SESSION['ID']=$_GET["Session"];
+                             }
+                                
+                             
+                        }
+                        if(isset($_GET["codigo"])){
+                            if($_GET!=0){
+                            $usuCod=$_GET["codigo"];
+                             }
+                                
+                             
+                        }else{
+                            echo "no ta";
+                        }
+                
                           $VARI="openForm()";
                       /*-----------------------OBTENER SESSION------*/
                   
@@ -74,25 +93,26 @@
           </div>
     </header>
     <body>
-    
     <div class="container">
-         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: red";>
-               <a class="navbar-brand" href="hasieraLog.php">hasiera</a>
-               <a class="navbar-brand" href="crearNoticia.php">albiste sortu</a>
+         <nav id="navegador" class="navbar navbar-expand-lg navbar-light" >
+         <a class="navbar-brand" href="hasieraLog.php?Session=<?php if(isset($_SESSION['ID'])){
+                   echo $_SESSION['ID'];
+                }else{echo 0 ;}?>">hasiera</a>
 
-               <?php if(isset($_SESSION['ADM'])){
-                   if($_SESSION['ADM']=1){
+                <?php if(isset($_SESSION['ADM'])){
+                    ?><a class="navbar-brand" href="crearNoticia.php?Session=<?php echo $_SESSION['ID']?>">Albiste berria</a>
+                <?php
+                   if($_SESSION['ADM']==1){
                    ?>
-               <a class="navbar-brand" href="eliminarComentario.php">Iruzkin ezabatu</a>
-               <a class="navbar-brand" href="eliminarNoticia.php">Albistea ezabatu</a>
-               <a class="navbar-brand" href="eliminarUsuario.php">Erabiltzailea ezabatu</a>
-               <a class="navbar-brand" href="modificarUsuario.php">Erabiltzailea aldatu</a>
-               <a id="KomentarioaEzabatu" class="navbar-brand" href="eliminarComentario.php">Komentarioa Ezabatu</a>
+               <a class="navbar-brand" href="eliminarComentario.php?Session=<?php echo $_SESSION['ID']?>">Iruzkin ezabatu</a>
+               <a class="navbar-brand" href="eliminarNoticia.php?Session=<?php echo $_SESSION['ID']?>">Albistea ezabatu</a>
+               <a class="navbar-brand" href="tablaUsuarios.php?Session=<?php echo $_SESSION['ID']?>">Erabiltzaileen taula</a>
 
                 <?php  } 
             }?>
          </nav>
         </div>
+
     <?php
                     #Salir si alguno de los datos no está presente
                     if(!isset($_POST["NOMB"])|| !isset($_POST["CORR"])|| !isset($_POST["CONT"])||!isset($_POST["CONT2"])|| !isset($_POST["COD"])){}else{
@@ -110,22 +130,13 @@
                             }
                         }
                     }
-                    ?>
-
-        <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]?>">
-            <p>Codigo de usuario:</p>
-            <input required id="COD" name="COD" type="number" min="1"  placeholder="Idatzi kodigoa...">
-            <br><br>
-            <p id="mensajeError" class="mensajeError"></p>
-            <input type="submit" id="hautatu" value="Hautatu">
-        </form>
-        <?php
+     
         $HOLA="HOLA";
             #Salir si alguno de los datos no está presente
-            if(!isset($_POST["COD"])) exit();
+            if(!isset($usuCod)) exit();
             #Si todo va bien, se ejecuta esta parte del código...
             include_once "konexioa.php";
-            $COD = $_POST["COD"];
+            $COD = $usuCod;
             $exist=comprobarUsuario($konexioa, $COD);
             	if($exist==true){
                     $admin=comprobarAdmin($konexioa, $COD);

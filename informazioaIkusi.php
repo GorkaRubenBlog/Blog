@@ -22,6 +22,13 @@
                           $i=0;
                           $infos=array();
                           $indes=array();
+                          if(isset($_GET["Session"])){
+                            if($_GET!=0){
+                            session_start();
+                            $_SESSION['ID']=$_GET["Session"];
+                             }
+                        }
+                
                           $VARI="openForm()";
                       /*-----------------------OBTENER SESSION------*/
                   
@@ -31,6 +38,7 @@
                               array_push($infos,$row["TITULO"]);
                   
                           }
+                          session_start();
                           include("Sessiones.php");
                           $IND=$_SESSION["index"];
 
@@ -48,6 +56,8 @@
                 else{echo $_SESSION["USU"];}?></button>
                <?php if(isset($_SESSION["USU"])){ ?>
                 <form method="POST" action="<?php echo $_SERVER["PHP_SELF"] ?>">
+                <input type="hidden" value="<?php echo $IND?>" name="IND">
+
                     <button type="submit" onClick="<?php  
                     unset( $_SESSION["USU"]) ;
 
@@ -77,20 +87,22 @@
     <body>
     
     <div class="container">
-         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: red";>
-               <a class="navbar-brand" href="hasieraLog.php">hasiera</a>
-               <a class="navbar-brand" href="crearNoticia.php">albiste sortu</a>
+         <nav id="navegador" class="navbar navbar-expand-lg navbar-light" >
 
-               <?php if(isset($_SESSION['ADM'])){
-                   if($_SESSION['ADM']=1){
+         <a class="navbar-brand" href="hasieraLog.php?Session=<?php if(isset($_SESSION['ID'])){
+                   echo $_SESSION['ID'];
+                }else{echo 0 ;}?>">hasiera</a>
+
+                <?php if(isset($_SESSION['ADM'])){
+                    ?><a class="navbar-brand" href="crearNoticia.php?Session=<?php echo $_SESSION['ID']?>">Albiste berria</a>
+                <?php
+                   if($_SESSION['ADM']==1){
                    ?>
-               <a class="navbar-brand" href="eliminarComentario.php">Iruzkin ezabatu</a>
-               <a class="navbar-brand" href="eliminarNoticia.php">Albistea ezabatu</a>
-               <a class="navbar-brand" href="eliminarUsuario.php">Erabiltzailea ezabatu</a>
-               <a class="navbar-brand" href="modificarUsuario.php">Erabiltzailea aldatu</a>
-               <a id="KomentarioaEzabatu" class="navbar-brand" href="eliminarComentario.php">Komentarioa Ezabatu</a>
+               <a class="navbar-brand" href="eliminarComentario.php?Session=<?php echo $_SESSION['ID']?>">Iruzkin ezabatu</a>
+               <a class="navbar-brand" href="eliminarNoticia.php?Session=<?php echo $_SESSION['ID']?>">Albistea ezabatu</a>
+               <a class="navbar-brand" href="tablaUsuarios.php?Session=<?php echo $_SESSION['ID']?>">Erabiltzaileen taula</a>
 
-                <?php  } 
+               <?php  } 
             }?>
          </nav>
         </div>

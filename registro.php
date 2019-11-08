@@ -44,6 +44,7 @@
             $CORR = $_POST["CORR"];
             $CONT = $_POST["CONT"];
             $CONT2 = $_POST["CONT2"];
+            $fecha_actual = date("d/m/Y");
 
             /*
             	Al incluir el archivo "base_de_datos.php", todas sus variables están
@@ -53,7 +54,7 @@
             if($CONT == $CONT2){
             	$exist=comprobarEmail($konexioa, $CORR);
             	if($exist==false){
-            		$insert=insertarUsuario($CONT, $CORR, $NOMB, $konexioa);
+            		$insert=insertarUsuario($CONT, $CORR, $NOMB, $fecha_actual, $konexioa);
             	}
             #execute regresa un booleano. True en caso de que todo vaya bien, falso en caso contrario.
             #Con eso podemos evaluar
@@ -70,10 +71,10 @@
                     }
                     return false;
             }
-            function insertarUsuario($CONT, $CORR, $NOMB, $konexioa){
+            function insertarUsuario($CONT, $CORR, $NOMB, $fecha_actual, $konexioa){
                 $CONT_HASH=hash("sha256", $CONT);
-            	$sentencia = $konexioa->prepare("INSERT INTO usuarios(CORR, NOMB, CONT) VALUES (?, ?, ?);");
-            	$resultado = $sentencia->execute([$CORR, $NOMB, $CONT_HASH]); # Pasar en el mismo orden de los ?
+            	$sentencia = $konexioa->prepare("INSERT INTO usuarios(CORR, NOMB, CONT, DATA_SORRERA) VALUES (?, ?, ?, ?);");
+            	$resultado = $sentencia->execute([$CORR, $NOMB, $CONT_HASH, $fecha_actual]); # Pasar en el mismo orden de los ?
             
             	if($resultado === TRUE) echo "<p class='mensajeCorrecto'>Insertado correctamente</p>";
             	else echo "<p class='mensajeError'>Algo salió mal. Por favor verifica que la tabla exista</p>";

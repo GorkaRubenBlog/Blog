@@ -2,7 +2,7 @@
                 
 <!DOCTYPE html>
 <html lang="es">
-<head>
+    <head>
         <title>Blog Registro</title>
         <link rel='stylesheet' href='Blog.css' type='text/css'>
         <script src="LogForm.js"></script>
@@ -18,12 +18,19 @@
     <header>
         <?php 
           
-    /*-----------------------OBTENER SESSION------*/
+                        /*-----------------------OBTENER SESSION------*/
                        
                           include_once "konexioa.php";
                           $i=0;
                           $infos=array();
                           $indes=array();
+                          if(isset($_GET["Session"])){
+                            if($_GET!=0){
+                            session_start();
+                            $_SESSION['ID']=$_GET["Session"];
+                             }
+                        }
+                
                           $VARI="openForm()";
                       /*-----------------------OBTENER SESSION------*/
                   
@@ -35,7 +42,7 @@
                           }
                           include("Sessiones.php");
 
-?>
+            ?>
         <!-- Logo Eta izena-->
         <!-- Logo-->
         <!-- izena-->
@@ -78,24 +85,26 @@
     <body>
     
     <div class="container">
-         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: red";>
-               <a class="navbar-brand" href="hasieraLog.php">hasiera</a>
-               <a class="navbar-brand" href="crearNoticia.php">albiste sortu</a>
+        <nav id="navegador" class="navbar navbar-expand-lg navbar-light" style="background-color: red";>
+        <a class="navbar-brand" href="hasieraLog.php?Session=<?php if(isset($_SESSION['ID'])){
+                   echo $_SESSION['ID'];
+                }else{echo 0 ;}?>">hasiera</a>
 
-               <?php if(isset($_SESSION['ADM'])){
-                   if($_SESSION['ADM']=1){
+                <?php if(isset($_SESSION['ADM'])){
+                    ?><a class="navbar-brand" href="crearNoticia.php?Session=<?php echo $_SESSION['ID']?>">Albiste berria</a>
+                <?php
+                   if($_SESSION['ADM']==1){
                    ?>
-               <a class="navbar-brand" href="eliminarComentario.php">Iruzkin ezabatu</a>
-               <a class="navbar-brand" href="eliminarNoticia.php">Albistea ezabatu</a>
-               <a class="navbar-brand" href="eliminarUsuario.php">Erabiltzailea ezabatu</a>
-               <a class="navbar-brand" href="modificarUsuario.php">Erabiltzailea aldatu</a>
-               <a id="KomentarioaEzabatu" class="navbar-brand" href="eliminarComentario.php">Komentarioa Ezabatu</a>
-               <a id="tablaUsuarios" class="navbar-brand" href="tablaUsuarios.php">Erabiltzaileen taula</a>
+               <a class="navbar-brand" href="eliminarComentario.php?Session=<?php echo $_SESSION['ID']?>">Iruzkin ezabatu</a>
+               <a class="navbar-brand" href="eliminarNoticia.php?Session=<?php echo $_SESSION['ID']?>">Albistea ezabatu</a>
+               <a class="navbar-brand" href="tablaUsuarios.php?Session=<?php echo $_SESSION['ID']?>">Erabiltzaileen taula</a>
 
                 <?php  } 
             }?>
-         </nav>
-        </div>
+         
+        </nav>
+    </div>
+
     <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]?>">
         <p>Titulua:</p>
         <input required id="TITULO" name="TITULO" type="text" pattern="[A-Za-z]{1,50}" placeholder="Idatzi Titulua...">
@@ -122,7 +131,7 @@
             include_once "konexioa.php";
             $TITULO = $_POST["TITULO"];
             $INFO_INFO = $_POST["INFO_INFO"];
-            echo "Titulo : $TITULO";
+            echo "Titulo : $TITULO<br>";
             echo "Texto : $INFO_INFO";
 
 
