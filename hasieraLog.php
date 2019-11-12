@@ -93,7 +93,7 @@
 
         <div class="grid-contenedor">
         <?php for($i=0;$i<sizeof($infos);$i++){ ?>
-            <div class="Def-3">
+            <div class="Def-6">
                 <form method="POST" action="informazioaIkusi.php">
                 <input type="hidden" value="<?php echo $indes[$i]?>" name="IND">
                <p><?php echo $infos[$i];?></p> 

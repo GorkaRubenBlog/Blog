@@ -7,8 +7,7 @@
         <script src="LogForm.js"></script>
         <script src="gertaerak.js"></script>
         <script src="konfirmazioa.js"></script>
-        <script src="UsuConfig.js"></script>
-        <script src="Elecciones.js"></script>
+
 
         <!-- CSS de w3schools -->
         <!-- <link rel='stylesheet' href='Blog.css' type='text/css'> -->
@@ -25,7 +24,11 @@
                           $infos=array();
                           $indes=array();
                           $VARI="openForm()";
-                       
+                          if(isset($_GET["codigo"])){
+                            if($_GET!=0){
+                            $usuCod=$_GET["codigo"];
+                             }
+                            }
                 
                       /*-----------------------OBTENER SESSION------*/
                   
@@ -82,8 +85,6 @@
 
                 <?php if(isset($_SESSION['ADM'])){
                     ?><a class="navbar-brand" href="crearNoticia.php">Albiste berria</a>
-                    <a class="navbar-brand" href="perfil.php">Konfigurazioa</a>
-
                 <?php
                    if($_SESSION['ADM']==1){
                    ?>
@@ -98,7 +99,7 @@
 
         <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]?>">
             <p>Codigo de usuario:</p>
-            <input required id="COD" name="COD" type="number" min="1"  placeholder="Idatzi kodigoa..." value=<?php if(isset($usuCod)){echo $usuCod;}?>>
+            <input required id="COD" name="COD" type="number" min="1"  placeholder="Idatzi kodigoa..." value=<?php echo $usuCod?>>
             <br><br>
             <p id="mensajeError" class="mensajeError"></p>
             <input type="submit" id="ezabatu" value="Ezabatu">

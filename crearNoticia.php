@@ -97,7 +97,7 @@
 
     <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]?>">
         <p>Titulua:</p>
-        <input required id="TITULO" name="TITULO" type="text" pattern="[A-Za-z]{1,50}" placeholder="Idatzi Titulua...">
+        <input required id="TITULO" name="TITULO" type="text" pattern="[A-Za-z\s]{1,50}" placeholder="Idatzi Titulua...">
         <br><br>
         <p>Albistearen textua:</p>
         <textarea required id="INFO_INFO" name="INFO_INFO" rows="4" cols="50" placeholder="Idatzi albistearen textua..."></textarea>
