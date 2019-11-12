@@ -18,10 +18,6 @@
 
   }
 
-  #navegador{
-    background-color: red;
-    width: 100%;
-  }
  
   /*----------HEADER---HASIERA---------*/
   #logo {
@@ -38,6 +34,7 @@
     background-color:#553600 ;
     height:100%;
   }
+
  /*------------HASIERA INGFORMAZIOAK--------------*/
   .grid-contenedor[class*="grid-contenedor"]{
     display: grid;

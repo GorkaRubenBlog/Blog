@@ -20,13 +20,7 @@
         $infos=array();
         $indes=array();
         $VARI="openForm()";
-        if(isset($_GET["Session"])){
-            if($_GET!=0){
-            session_start();
-            $_SESSION['ID']=$_GET["Session"];
-             }
-        }
-
+       
     /*-----------------------OBTENER SESSION------*/
         $sql = "SELECT * FROM informazioa";
         foreach ($konexioa->query($sql) as $row) {
@@ -34,6 +28,7 @@
             array_push($infos,$row["TITULO"]);
 
         }
+        session_start();
         include("Sessiones.php");
 
 ?>
@@ -47,15 +42,11 @@
         <section id="login">
             <button id="NombLog"onclick=<?php echo $VARI?>><?php if(!isset($_SESSION["USU"])){echo "loggin";}
                 else{echo $_SESSION["USU"];}?></button>
-                <?php if(isset($_SESSION["USU"])){ ?>
-                <form method="POST" action="<?php echo $_SERVER["PHP_SELF"] ?>">
-                    <button type="submit" onClick="<?php  
-                    unset( $_SESSION["USU"]) ;
-
-                    session_destroy(); ?>">loggout</button>
-                </form>
-                <?php } ?>
+                <?php if( $_SESSION['LOG'] == TRUE){;?>
+            <button onclick="location.href = 'Loggout.php?pag=<?php echo $_SERVER['PHP_SELF'] ?>';">loggout</button>
+            <?php }?>
         </section>
+      
 
         <!--Pop-Up----->
         <div class="form-popup" id="myForm">
@@ -83,13 +74,13 @@
          
 
          <?php if(isset($_SESSION['ADM'])){
-                    ?><a class="navbar-brand" href="crearNoticia.php?Session=<?php echo $_SESSION['ID']?>">Albiste berria</a>
+                    ?><a class="navbar-brand" href="crearNoticia.php">Albiste berria</a>
                 <?php
                    if($_SESSION['ADM']==1){
                    ?>
-               <a class="navbar-brand" href="eliminarComentario.php?Session=<?php echo $_SESSION['ID']?>">Iruzkin ezabatu</a>
-               <a class="navbar-brand" href="eliminarNoticia.php?Session=<?php echo $_SESSION['ID']?>">Albistea ezabatu</a>
-               <a class="navbar-brand" href="tablaUsuarios.php?Session=<?php echo $_SESSION['ID']?>">Erabiltzaileen taula</a>
+               <a class="navbar-brand" href="eliminarComentario.php">Iruzkin ezabatu</a>
+               <a class="navbar-brand" href="eliminarNoticia.php">Albistea ezabatu</a>
+               <a class="navbar-brand" href="tablaUsuarios.php">Erabiltzaileen taula</a>
 
                 <?php  } 
             }?>
@@ -101,8 +92,6 @@
             <div class="Def-1">
                 <form method="POST" action="informazioaIkusi.php">
                 <input type="hidden" value="<?php echo $indes[$i]?>" name="IND">
-                <input type="hidden" value="<?php echo $_SESSION['ID']?>"name="cod">
-
                <p><?php echo $infos[$i];?></p> 
                 <input type="submit" >
                 </form>

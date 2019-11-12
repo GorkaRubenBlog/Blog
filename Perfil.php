@@ -10,6 +10,9 @@
         
         <script src="LogForm.js"></script>
         <script src="gertaerak.js"></script>
+        <script src="UsuConfig.js"></script>
+        <script src="Elecciones.js"></script>
+
         <!--link rel='shortcut icon' type='image/x-icon' href='logoBlack.png' />-->
   
     </head>
@@ -20,12 +23,7 @@
         $infos=array();
         $indes=array();
         $VARI="openForm()";
-        if(isset($_GET["Session"])){
-            if($_GET!=0){
-            session_start();
-            $_SESSION['ID']=$_GET["Session"];
-             }
-        }
+    
 
     /*-----------------------OBTENER SESSION------*/
         $sql = "SELECT * FROM informazioa";
@@ -34,6 +32,8 @@
             array_push($infos,$row["TITULO"]);
 
         }
+        session_start();
+
         include("Sessiones.php");
 
 ?>
@@ -47,14 +47,11 @@
         <section id="login">
             <button id="NombLog"onclick=<?php echo $VARI?>><?php if(!isset($_SESSION["USU"])){echo "loggin";}
                 else{echo $_SESSION["USU"];}?></button>
-                <?php if(isset($_SESSION["USU"])){ ?>
-                <form method="POST" action="<?php echo $_SERVER["PHP_SELF"] ?>">
-                    <button type="submit" onClick="<?php  
-                    unset( $_SESSION["USU"]) ;
+                    <?php if( $_SESSION['LOG'] == TRUE){;?>
+            <button onclick="location.href = 'Loggout.php?pag=<?php echo $_SERVER['PHP_SELF'] ?>';">loggout</button>
+            <?php }?>
+        
 
-                    session_destroy(); ?>">loggout</button>
-                </form>
-                <?php } ?>
         </section>
 
         <!--Pop-Up----->
@@ -79,18 +76,16 @@
     <body>
         
         <div class="container">
-         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: red";>
-         <a class="navbar-brand" href="hasieraLog.php?Session=<?php if(isset($_SESSION['ID'])){
-                   echo $_SESSION['ID'];
-                }else{echo 0 ;}?>">hasiera</a>
+         <nav id="navetzaile"class="navbar navbar-expand-lg navbar-light";>
+         <a class="navbar-brand" href="hasieraLog.php">hasiera</a>
                <?php if(isset($_SESSION['ADM'])){
                    if($_SESSION['ADM']=1){
                    ?>
-                    <a class="navbar-brand" href="eliminarComentario.php?Session=<?php echo $_SESSION['ID']?>">Iruzkin ezabatu</a>
-                    <a class="navbar-brand" href="eliminarNoticia.php?Session=<?php echo $_SESSION['ID']?>">Albistea ezabatu</a>
-                    <a class="navbar-brand" href="eliminarUsuario.php?Session=<?php echo $_SESSION['ID']?>">Erabiltzailea ezabatu</a>
-                    <a class="navbar-brand" href="modificarUsuario.php?Session=<?php echo $_SESSION['ID']?>">Erabiltzailea aldatu</a>
-                    <a class="navbar-brand" href="eliminarComentario.php?Session=<?php echo $_SESSION['ID']?>">Komentarioa Ezabatu</a>
+                    <a class="navbar-brand" href="eliminarComentario.php">Iruzkin ezabatu</a>
+                    <a class="navbar-brand" href="eliminarNoticia.php">Albistea ezabatu</a>
+                    <a class="navbar-brand" href="eliminarUsuario.php">Erabiltzailea ezabatu</a>
+                    <a class="navbar-brand" href="modificarUsuario.php">Erabiltzailea aldatu</a>
+                    <a class="navbar-brand" href="eliminarComentario.php">Komentarioa Ezabatu</a>
 
                 <?php  } 
             }?>
@@ -100,21 +95,19 @@
                 <input id="IZEN" type="hidden" value="<?php echo $_SESSION["USU"] ?>">
                 <p>Kolorea:</p>
                 <select id="BG" name="select">
-                    <option value="value1">Default</option> 
-                    <option value="white" selected>Zuria</option>
+                    <option value="default">Default</option> 
+                    <option value="white" >Zuria</option>
                     <option value="black">Beltza</option>
                 </select>            
                 <br><br>
                 <p>Nav-Colore:</p>
                 <select id="NBG"name="NBG">
-                    <option value="white" selected>Zuria</option>
+                    <option value="white" >Zuria</option>
                     <option value="red">Gorria</option>
                 </select> 
                 <br><br>
-               
-                <input type="submit" id="sortu" value="Sortu">
-                <input type="reset" value="Borrar" id="borrar" />
             </form>
+            <button onclick="f1()">Amaitu</button>
         </div>
   
         <footer>
