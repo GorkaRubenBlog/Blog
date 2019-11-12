@@ -4,8 +4,12 @@
     <head>
         <title>Blog Registro</title>
         <script src="konfirmazioa.js"></script>
+        
         <link rel='stylesheet' href='Blog.css' type='text/css'>
-
+        <script src="LogForm.js"></script>
+        <script src="gertaerak.js"></script>
+        <script src="UsuConfig.js"></script>
+        <script src="Elecciones.js"></script>
         <!-- CSS de w3schools -->
         <!-- <link rel='stylesheet' href='Blog.css' type='text/css'> -->
         <!--link rel='shortcut icon' type='image/x-icon' href='logoBlack.png' />-->

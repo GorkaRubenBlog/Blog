@@ -15,7 +15,10 @@
     background-color: #D4CF6A;
     display: inline-block;
     width: 100%;
-
+  }
+  #navegador{
+    background-color: red;
+    width: 100%;
   }
 
  

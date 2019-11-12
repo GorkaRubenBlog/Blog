@@ -6,7 +6,8 @@
         <link rel='stylesheet' href='Blog.css' type='text/css'>
         <script src="LogForm.js"></script>
         <script src="gertaerak.js"></script>
-
+        <script src="UsuConfig.js"></script>
+        <script src="Elecciones.js"></script>
 
         <!-- CSS de w3schools -->
         <!-- <link rel='stylesheet' href='Blog.css' type='text/css'> -->
@@ -96,6 +97,8 @@
 
                 <?php if(isset($_SESSION['ADM'])){
                     ?><a class="navbar-brand" href="crearNoticia.php?">Albiste berria</a>
+                        <a class="navbar-brand" href="perfil.php">Konfigurazioa</a>
+
                 <?php
                    if($_SESSION['ADM']==1){
                    ?>

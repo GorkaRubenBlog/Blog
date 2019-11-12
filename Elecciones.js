@@ -3,7 +3,8 @@ window.addEventListener("load", inicio);
 
 function inicio(){
     document.body.style.background  = localStorage.getItem('BG');
-    document.getElementsByClassName('container').style.backgroundColor =localStorage.getItem('NBG')
+    console.log(localStorage.getItem('NBG'));
+    document.getElementById('navegador').style.backgroundColor =localStorage.getItem('NBG')
 
 }
 function f1(){

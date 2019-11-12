@@ -7,7 +7,8 @@
         <script src="LogForm.js"></script>
         <script src="gertaerak.js"></script>
         <script src="konfirmazioa.js"></script>
-
+        <script src="UsuConfig.js"></script>
+        <script src="Elecciones.js"></script>
 
         <!-- CSS de w3schools -->
         <!-- <link rel='stylesheet' href='Blog.css' type='text/css'> -->
@@ -79,6 +80,8 @@
 
                 <?php if(isset($_SESSION['ADM'])){
                     ?><a class="navbar-brand" href="crearNoticia.php">Albiste berria</a>
+                     <a class="navbar-brand" href="perfil.php">Konfigurazioa</a>
+
                 <?php
                    if($_SESSION['ADM']==1){
                    ?>
@@ -90,6 +93,29 @@
             }?>
          </nav>
         </div>
+
+        <table class="tabla" >
+  	
+      <thead >
+          <tr>
+              <th>ID</th>
+              <th>TITULUA</th>
+
+          </tr>
+      </thead>
+      <?php foreach ($konexioa->query('SELECT * from informazioa') as $row){ // aca puedes hacer la consulta e iterarla con each. ?> 
+          <tr>
+              <td><?php echo $row['COD'] // aca te faltaba poner los echo para que se muestre el valor de la variable.  ?></td>
+              <td><?php echo $row['TITULO'] ?></td>
+             
+              
+          </tr>
+      <?php
+          }
+      ?>
+  </table>
+
+
         <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]?>">
             <p>Codigo del Noticia:</p>
             <input required id="COD" name="COD" type="number" min="1"  placeholder="Idatzi kodigoa...">

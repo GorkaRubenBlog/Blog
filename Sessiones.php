@@ -4,6 +4,7 @@
     if(isset($_SESSION["LOG"])){}
     else{
         $_SESSION['LOG'] = FALSE;
+        $PASO=false;
     }
     if(isset($_SESSION["ID"])){
         $_SESSION['LOG'] = TRUE;
@@ -21,6 +22,7 @@ if(!isset($_POST["CORR"])||!isset($_POST["CONT"])){}else{
     $CORR = $_POST["CORR"];
     $CONT = $_POST["CONT"];
     $CONT_HASH=hash("sha256", $CONT);
+    $PASO=false;
 
         $sql = "SELECT * FROM usuarios WHERE CORR='$CORR' AND CONT='$CONT_HASH'";    
 foreach ($konexioa->query($sql) as $row) {
@@ -29,6 +31,10 @@ $_SESSION['USU'] = $row["NOMB"];
 $_SESSION['ID'] =$row["COD"];
 $_SESSION['ADM'] =$row["ADM"];
 $VARI ="";
+$PASO=true;
+}
+if($PASO==false){
+
 }
 }
 if($_SESSION['LOG']==TRUE){

@@ -76,16 +76,16 @@
     <body>
         
         <div class="container">
-         <nav id="navetzaile"class="navbar navbar-expand-lg navbar-light";>
+         <nav id="navegador"class="navbar navbar-expand-lg navbar-light" style="backgroundcolor";>
          <a class="navbar-brand" href="hasieraLog.php">hasiera</a>
-               <?php if(isset($_SESSION['ADM'])){
-                   if($_SESSION['ADM']=1){
+         <?php if(isset($_SESSION['ADM'])){
+                    ?><a class="navbar-brand" href="crearNoticia.php">Albiste berria</a>
+                <?php
+                   if($_SESSION['ADM']==1){
                    ?>
-                    <a class="navbar-brand" href="eliminarComentario.php">Iruzkin ezabatu</a>
-                    <a class="navbar-brand" href="eliminarNoticia.php">Albistea ezabatu</a>
-                    <a class="navbar-brand" href="eliminarUsuario.php">Erabiltzailea ezabatu</a>
-                    <a class="navbar-brand" href="modificarUsuario.php">Erabiltzailea aldatu</a>
-                    <a class="navbar-brand" href="eliminarComentario.php">Komentarioa Ezabatu</a>
+               <a class="navbar-brand" href="eliminarComentario.php">Iruzkin ezabatu</a>
+               <a class="navbar-brand" href="eliminarNoticia.php">Albistea ezabatu</a>
+               <a class="navbar-brand" href="tablaUsuarios.php">Erabiltzaileen taula</a>
 
                 <?php  } 
             }?>

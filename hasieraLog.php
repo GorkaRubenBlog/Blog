@@ -10,6 +10,8 @@
         
         <script src="LogForm.js"></script>
         <script src="gertaerak.js"></script>
+        <script src="UsuConfig.js"></script>
+        <script src="Elecciones.js"></script>
         <!--link rel='shortcut icon' type='image/x-icon' href='logoBlack.png' />-->
   
     </head>
@@ -30,6 +32,7 @@
         }
         session_start();
         include("Sessiones.php");
+        
 
 ?>
         <!-- Logo Eta izena-->
@@ -75,6 +78,7 @@
 
          <?php if(isset($_SESSION['ADM'])){
                     ?><a class="navbar-brand" href="crearNoticia.php">Albiste berria</a>
+                    <a class="navbar-brand" href="perfil.php">Konfigurazioa</a>
                 <?php
                    if($_SESSION['ADM']==1){
                    ?>
@@ -89,7 +93,7 @@
 
         <div class="grid-contenedor">
         <?php for($i=0;$i<sizeof($infos);$i++){ ?>
-            <div class="Def-1">
+            <div class="Def-3">
                 <form method="POST" action="informazioaIkusi.php">
                 <input type="hidden" value="<?php echo $indes[$i]?>" name="IND">
                <p><?php echo $infos[$i];?></p> 

@@ -8,7 +8,8 @@
         <script src="LogForm.js"></script>
         <script src="gertaerak.js"></script>
         <script src="konfirmazioa.js"></script>
-
+        <script src="UsuConfig.js"></script>
+        <script src="Elecciones.js"></script>
 
         <!-- CSS de w3schools -->
         <!-- <link rel='stylesheet' href='Blog.css' type='text/css'> -->
@@ -79,6 +80,8 @@
 
                 <?php if(isset($_SESSION['ADM'])){
                     ?><a class="navbar-brand" href="crearNoticia.php">Albiste berria</a>
+                     <a class="navbar-brand" href="perfil.php">Konfigurazioa</a>
+
                 <?php
                    if($_SESSION['ADM']==1){
                    ?>
@@ -97,7 +100,7 @@
         <input required id="TITULO" name="TITULO" type="text" pattern="[A-Za-z]{1,50}" placeholder="Idatzi Titulua...">
         <br><br>
         <p>Albistearen textua:</p>
-        <input required id="INFO_INFO" name="INFO_INFO" type="textarea" placeholder="Idatzi albistearen textua...">
+        <textarea required id="INFO_INFO" name="INFO_INFO" rows="4" cols="50" placeholder="Idatzi albistearen textua..."></textarea>
         <br><br>
 
         <p id="mensajeError" class="mensajeError"></p>

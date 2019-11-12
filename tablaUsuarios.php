@@ -7,7 +7,8 @@
         <script src="LogForm.js"></script>
         <script src="gertaerak.js"></script>
         <script src="konfirmazioa.js"></script>
-
+        <script src="UsuConfig.js"></script>
+        <script src="Elecciones.js"></script>
 
         <!-- CSS de w3schools -->
         <!-- <link rel='stylesheet' href='Blog.css' type='text/css'> -->
@@ -79,12 +80,13 @@
 
                 <?php if(isset($_SESSION['ADM'])){
                     ?><a class="navbar-brand" href="crearNoticia.php">Albiste berria</a>
+                        <a class="navbar-brand" href="perfil.php">Konfigurazioa</a>
+
                 <?php
                    if($_SESSION['ADM']==1){
                    ?>
                <a class="navbar-brand" href="eliminarComentario.php">Iruzkin ezabatu</a>
                <a class="navbar-brand" href="eliminarNoticia.php">Albistea ezabatu</a>
-               <a class="navbar-brand" href="tablaUsuarios.php">Erabiltzaileen taula</a>
 
                 <?php  } 
             }?>
@@ -101,9 +103,6 @@
                 <th>ADMIN</th>
                 <th>EGUNERATU</th>
                 <th>EZABATU</th>
-
-
-            
 		    </tr>
 		</thead>
         <?php foreach ($konexioa->query('SELECT * from usuarios') as $row){ // aca puedes hacer la consulta e iterarla con each. ?> 
