@@ -9,9 +9,9 @@ function iniciar() {
         document.getElementById("sortuAlbistea").addEventListener('click', balidatuAlbistea , false);
     if(document.getElementById("gorde"))
         document.getElementById("gorde").addEventListener("click", balidatuErabiltzaileSortuta, false);
-
+    
 }
-//****************************
+//****************************        <script src="Elecciones.js"></script>
 //Balidatu erabiltzaile berria
 //****************************
 function izenaBalidatu() {
@@ -173,7 +173,7 @@ function emailBalidatuErabiltzaileSortuta() {
 
 function balidatuErabiltzaileSortuta(e) {
     borrarError();
-    if (izenaBalidatuErabiltzaileSortuta() && emailBalidatuErabiltzaileSortuta() && confirm("Erabiltzailari datuak ondo sartu diozu?")) {
+    if (izenaBalidatuErabiltzaileSortuta() && emailBalidatuErabiltzaileSortuta() && confirm("Erabiltzailari datuak ondo sartu dizkiozu?")) {
         return true
     } else {
         e.preventDefault();

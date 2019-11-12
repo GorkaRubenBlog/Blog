@@ -85,7 +85,7 @@
               <button type="submit" class="btn">Login</button>
 
               <a  class="btn" href='registro.php'>registratu</a>
-              <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
+              <button id="close" type="submit" class="btn cancel" >Close</button>
             </form>
 
           </div>
@@ -220,13 +220,7 @@
             	else echo "<p class='mensajeError'>Algo salió mal. Por favor verifica que la tabla exista</p>";
             }
 
-            // function eliminarUsuario($COD, $konexioa){
-            // 	$sentencia = $konexioa->prepare("DELETE FROM usuarios WHERE COD= (?) ;");
-            //     $resultado = $sentencia->execute([$COD]); # Pasar en el mismo orden de los ?
-
-            // 	if($resultado === TRUE) echo "<p class='mensajeCorrecto'>Eliminado correctamente</p>";
-            // 	else echo "<p class='mensajeError'>Algo salió mal. Por favor verifica que la tabla exista</p>";
-            // }
+      
             ?>
         <form method="POST" action="hasieraLog.php">
             <input type="submit" value="Atzera">

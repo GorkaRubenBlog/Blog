@@ -72,7 +72,7 @@
               <button type="submit" class="btn">Login</button>
 
               <a  class="btn" href='registro.php'>registratu</a>
-              <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
+              <button id="close" type="submit" class="btn cancel" >Close</button>
             </form>
 
           </div>
@@ -126,7 +126,7 @@
                         echo "<p class='mensajeError'> $COD --  Administratzaileak ezin dira ezabatu </p>";
                     }
             	}else{
-                    echo "<p class='mensajeError'> $COD --  Erabiltzaile kode hau es dago datu basean </p>";
+                    echo "<p class='mensajeError'> $COD --  Erabiltzaile kode hau ez dago datu basean </p>";
 
                 }
             

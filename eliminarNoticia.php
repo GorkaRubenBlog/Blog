@@ -68,7 +68,7 @@
               <button type="submit" class="btn">Login</button>
 
               <a  class="btn" href='registro.php'>registratu</a>
-              <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
+              <button id="close" type="submit" class="btn cancel" >Close</button>
             </form>
 
           </div>
@@ -139,7 +139,7 @@
             	if($exist==true){
             		$delete=eliminarNoticia($COD, $konexioa);
             	}else{
-                    echo "<p class='mensajeError'> $COD --  Komentario kode hau es dago datu basean </p>";
+                    echo "<p class='mensajeError'> $COD --  Komentario kode hau ez dago datu basean </p>";
 
                 }
 

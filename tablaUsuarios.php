@@ -67,7 +67,7 @@
               <button type="submit" class="btn">Login</button>
 
               <a  class="btn" href='registro.php'>registratu</a>
-              <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
+              <button id="close" type="submit" class="btn cancel" >Close</button>
             </form>
 
           </div>
@@ -97,9 +97,9 @@
 		<thead >
 		    <tr>
 		    	<th>ID</th>
-		    	<th>CORREO</th>
-		    	<th>NOMBRE</th>
-                <th>CONTRASEÑA</th>
+		    	<th>EMAIL</th>
+		    	<th>IZENA</th>
+                <th>PASAHITZA</th>
                 <th>ADMIN</th>
                 <th>EGUNERATU</th>
                 <th>EZABATU</th>

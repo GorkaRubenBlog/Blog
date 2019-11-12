@@ -12,6 +12,7 @@
         <script src="gertaerak.js"></script>
         <script src="UsuConfig.js"></script>
         <script src="Elecciones.js"></script>
+
         <!--link rel='shortcut icon' type='image/x-icon' href='logoBlack.png' />-->
   
     </head>
@@ -38,7 +39,8 @@
         <!-- Logo Eta izena-->
         <!-- Logo-->
         <!-- izena-->
-        <section id="logo">        
+        <p class="mensajeError"><p>
+
             <H1>BLOG IZENA</H1>
         </section>
         <!-- Login-->
@@ -55,17 +57,16 @@
         <div class="form-popup" id="myForm">
             <form method="POST" action="<?php echo $_SERVER["PHP_SELF"] ?>" class="form-container">
               <h1>Login</h1>
-          
               <label for="email"><b>Email</b></label>
               <input type="text" placeholder="Enter Email" name="CORR" required>
-          
+                    
               <label for="psw"><b>Password</b></label>
               <input type="password" placeholder="Enter Password" name="CONT" required>
           
-              <button type="submit" class="btn">Login</button>
+              <button id="loggin" type="submit" class="btn">Loggin</button>
 
               <a  class="btn" href='registro.php'>registratu</a>
-              <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
+              <button id="close" type="submit" class="btn cancel" >Close</button>
             </form>
 
           </div>
